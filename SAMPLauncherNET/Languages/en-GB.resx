@@ -205,6 +205,9 @@ This project is located at</value>
   <data name="DISABLE_HEAD_MOVE" xml:space="preserve">
     <value>Disable head move</value>
   </data>
+  <data name="DUTCH" xml:space="preserve">
+    <value>Dutch (Nederlands)</value>
+  </data>
   <data name="EDIT_API_TITLE" xml:space="preserve">
     <value>San Andreas Multiplayer - Edit API</value>
   </data>
@@ -252,6 +255,9 @@ This project is located at</value>
   </data>
   <data name="GAMEMODE" xml:space="preserve">
     <value>Gamemode</value>
+  </data>
+  <data name="GEORGIAN" xml:space="preserve">
+    <value>Georgian (ქართული)</value>
   </data>
   <data name="GERMAN" xml:space="preserve">
     <value>German (Deutsch)</value>
@@ -372,6 +378,9 @@ This project is located at</value>
   </data>
   <data name="REVERT_CONFIG" xml:space="preserve">
     <value>Revert config</value>
+  </data>
+  <data name="RUSSIAN" xml:space="preserve">
+    <value>Russian (Русский)</value>
   </data>
   <data name="SAVE" xml:space="preserve">
     <value>Save</value>

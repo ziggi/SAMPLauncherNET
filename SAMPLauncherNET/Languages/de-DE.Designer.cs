@@ -317,6 +317,15 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Holländisch (Nederlands) ähnelt.
+        /// </summary>
+        internal static string DUTCH {
+            get {
+                return ResourceManager.GetString("DUTCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - API bearbeiten ähnelt.
         /// </summary>
         internal static string EDIT_API_TITLE {
@@ -457,6 +466,15 @@ namespace SAMPLauncherNET.Languages {
         internal static string GAMEMODE {
             get {
                 return ResourceManager.GetString("GAMEMODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Georgisch (ქართული) ähnelt.
+        /// </summary>
+        internal static string GEORGIAN {
+            get {
+                return ResourceManager.GetString("GEORGIAN", resourceCulture);
             }
         }
         
@@ -821,6 +839,15 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Russisch (Русский) ähnelt.
+        /// </summary>
+        internal static string RUSSIAN {
+            get {
+                return ResourceManager.GetString("RUSSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Speichern ähnelt.
         /// </summary>
         internal static string SAVE {
@@ -983,7 +1010,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Abw. kompatible Favoriten ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Abw. komp. Favoriten ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_FAVOURITES {
             get {

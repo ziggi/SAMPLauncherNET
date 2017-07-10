@@ -22,14 +22,14 @@ namespace SAMPLauncherNET.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class en_GB {
+    internal class ru_RU {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal en_GB() {
+        internal ru_RU() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SAMPLauncherNET.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAMPLauncherNET.Languages.en-GB", typeof(en_GB).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAMPLauncherNET.Languages.ru-RU", typeof(ru_RU).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die About ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die О программе ähnelt.
         /// </summary>
         internal static string ABOUT {
             get {
@@ -70,11 +70,11 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die SAMPLauncher NET is a launcher for San Andreas Multiplayer.
+        ///   Sucht eine lokalisierte Zeichenfolge, die SAMPLauncher NET - это загрузчик для San Andreas Multiplayer.
         ///
-        ///This software is all time free and licenced with GPLv3.
+        ///Это программное обеспечение бесплатно и лицензировано по лицензии GPLv3.
         ///
-        ///This project is located at ähnelt.
+        ///Этот проект находится ähnelt.
         /// </summary>
         internal static string ABOUT_DESCRIPTION {
             get {
@@ -83,7 +83,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add new API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Добавить новый API ähnelt.
         /// </summary>
         internal static string ADD_NEW_API {
             get {
@@ -92,7 +92,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add server to favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Добавить сервер в избранное ähnelt.
         /// </summary>
         internal static string ADD_SERVER_TO_FAVOURITES {
             get {
@@ -101,7 +101,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Already in favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Уже в избранном ähnelt.
         /// </summary>
         internal static string ALREADY_IN_FAVOURITES {
             get {
@@ -119,7 +119,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API endpoint ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Конечная точка API ähnelt.
         /// </summary>
         internal static string API_ENDPOINT {
             get {
@@ -128,7 +128,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please specify a valid API endpoint ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Укажите действительную конечную точку для API ähnelt.
         /// </summary>
         internal static string API_ENDPOINT_MISSING {
             get {
@@ -137,7 +137,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API endpoint missing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отсутствует конечная точка API ähnelt.
         /// </summary>
         internal static string API_ENDPOINT_MISSING_TITLE {
             get {
@@ -146,7 +146,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API name ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Имя API ähnelt.
         /// </summary>
         internal static string API_NAME {
             get {
@@ -155,7 +155,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please insert an API name. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пожалуйста введите имя API. ähnelt.
         /// </summary>
         internal static string API_NAME_MISSING {
             get {
@@ -164,7 +164,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API name missing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отсутствует имя API ähnelt.
         /// </summary>
         internal static string API_NAME_MISSING_TITLE {
             get {
@@ -173,7 +173,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API type ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Тип API ähnelt.
         /// </summary>
         internal static string API_TYPE {
             get {
@@ -182,7 +182,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please select an API type. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пожалуйста выберите тип API. ähnelt.
         /// </summary>
         internal static string API_TYPE_MISSING {
             get {
@@ -191,7 +191,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API type missing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отсутсвуету тип API ähnelt.
         /// </summary>
         internal static string API_TYPE_MISSING_TITLE {
             get {
@@ -200,7 +200,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Audio message off ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Выключить сообщения проигрываемого аудио потока ähnelt.
         /// </summary>
         internal static string AUDIO_MESSAGE_OFF {
             get {
@@ -209,7 +209,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Audio proxy off ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Выключить прокси для аудио потока ähnelt.
         /// </summary>
         internal static string AUDIO_PROXY_OFF {
             get {
@@ -218,7 +218,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отмена ähnelt.
         /// </summary>
         internal static string CANCEL {
             get {
@@ -227,7 +227,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close when launched ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Закрыть при запуске ähnelt.
         /// </summary>
         internal static string CLOSE_WHEN_LAUNCHED {
             get {
@@ -236,7 +236,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Подключиться ähnelt.
         /// </summary>
         internal static string CONNECT {
             get {
@@ -245,7 +245,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect now! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Подключиться сейчас! ähnelt.
         /// </summary>
         internal static string CONNECT_NOW {
             get {
@@ -254,7 +254,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Connect ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Подключиться ähnelt.
         /// </summary>
         internal static string CONNECT_TITLE {
             get {
@@ -263,7 +263,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect with RCON ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Подключиться с RCON ähnelt.
         /// </summary>
         internal static string CONNECT_WITH_RCON {
             get {
@@ -272,7 +272,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Debug mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Режим отладки ähnelt.
         /// </summary>
         internal static string DEBUG_MODE {
             get {
@@ -281,7 +281,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to delete the selected images? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вы действительно хотите удалить выбранные изображения? ähnelt.
         /// </summary>
         internal static string DELETE_SELECTED_IMAGES {
             get {
@@ -290,7 +290,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete selected images ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Удалить выбранные изображения ähnelt.
         /// </summary>
         internal static string DELETE_SELECTED_IMAGES_TITLE {
             get {
@@ -299,7 +299,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Direct to screen textdraw render method (slow) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Рендеринг TextDraw прямо на экран (медленно) ähnelt.
         /// </summary>
         internal static string DIRECT_MODE {
             get {
@@ -308,7 +308,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Disable head move ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отключить поворот головы ähnelt.
         /// </summary>
         internal static string DISABLE_HEAD_MOVE {
             get {
@@ -317,7 +317,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Dutch (Nederlands) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Голландский (Nederlands) ähnelt.
         /// </summary>
         internal static string DUTCH {
             get {
@@ -326,7 +326,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Edit API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Редактирование API ähnelt.
         /// </summary>
         internal static string EDIT_API_TITLE {
             get {
@@ -335,7 +335,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edit selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Редактировать выбранный API ähnelt.
         /// </summary>
         internal static string EDIT_SELECTED_API {
             get {
@@ -344,7 +344,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die English ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die английский (English) ähnelt.
         /// </summary>
         internal static string ENGLISH {
             get {
@@ -353,7 +353,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ошибка ähnelt.
         /// </summary>
         internal static string ERROR {
             get {
@@ -362,7 +362,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Extended server information ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Расширенная информация о сервере ähnelt.
         /// </summary>
         internal static string EXTENDED_SERVER_INFORMATION_TITLE {
             get {
@@ -371,7 +371,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please select a favourites list. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пожалуйста выберите список избранных. ähnelt.
         /// </summary>
         internal static string FAVOURITE_LIST_NOT_SELECTED {
             get {
@@ -380,7 +380,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Favourites list not selected ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Список избранных не выбран ähnelt.
         /// </summary>
         internal static string FAVOURITE_LIST_NOT_SELECTED_TITLE {
             get {
@@ -389,7 +389,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter hostname ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Фильтр по имени сервера ähnelt.
         /// </summary>
         internal static string FILTER_HOSTNAME {
             get {
@@ -398,7 +398,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter IP and port ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Фильтр по IP и порту ähnelt.
         /// </summary>
         internal static string FILTER_IP_AND_PORT {
             get {
@@ -407,7 +407,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Языковой фильтр ähnelt.
         /// </summary>
         internal static string FILTER_LANGUAGE {
             get {
@@ -416,7 +416,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Фильтр по режиму ähnelt.
         /// </summary>
         internal static string FILTER_MODE {
             get {
@@ -425,7 +425,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Font-face ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Шрифт ähnelt.
         /// </summary>
         internal static string FONT_FACE {
             get {
@@ -434,7 +434,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Font-weight ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Полужирный шрифт ähnelt.
         /// </summary>
         internal static string FONT_WEIGHT {
             get {
@@ -443,7 +443,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die FPS limit ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ограничение FPS ähnelt.
         /// </summary>
         internal static string FPS_LIMIT {
             get {
@@ -452,7 +452,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Gallery ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Галерея ähnelt.
         /// </summary>
         internal static string GALLERY {
             get {
@@ -461,7 +461,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Gamemode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Игровой режим ähnelt.
         /// </summary>
         internal static string GAMEMODE {
             get {
@@ -470,7 +470,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Georgian (ქართული) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die грузинский (ქართული) ähnelt.
         /// </summary>
         internal static string GEORGIAN {
             get {
@@ -479,7 +479,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die German (Deutsch) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Немецкий (Deutsch) ähnelt.
         /// </summary>
         internal static string GERMAN {
             get {
@@ -488,7 +488,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die GitHub project SAMPLauncherNET ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die GitHub проекта SAMPLauncherNET ähnelt.
         /// </summary>
         internal static string GITHUB_PROJECT {
             get {
@@ -497,7 +497,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hostname ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Название сервера ähnelt.
         /// </summary>
         internal static string HOSTNAME {
             get {
@@ -506,7 +506,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enable IME (Input Method Editor) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Включить IME (Input Method Editor - Редактор метода ввода) ähnelt.
         /// </summary>
         internal static string IME {
             get {
@@ -515,7 +515,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Input error ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ошибка ввода ähnelt.
         /// </summary>
         internal static string INPUT_ERROR {
             get {
@@ -524,7 +524,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert filter here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вводите фильтр здесь.. ähnelt.
         /// </summary>
         internal static string INSERT_FILTER_HERE {
             get {
@@ -533,7 +533,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert RCON password here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вводите RCON пароль здесь... ähnelt.
         /// </summary>
         internal static string INSERT_RCON_PASSWORD_HERE {
             get {
@@ -542,7 +542,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert server password here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вводите пароль сервера здесь... ähnelt.
         /// </summary>
         internal static string INSERT_SERVER_PASSWORD_HERE {
             get {
@@ -551,7 +551,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert player name here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вводите имя игрока здесь... ähnelt.
         /// </summary>
         internal static string INSERT_USERNAME_HERE {
             get {
@@ -560,7 +560,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die IP and port ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die IP и порт ähnelt.
         /// </summary>
         internal static string IP_AND_PORT {
             get {
@@ -569,7 +569,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Язык ähnelt.
         /// </summary>
         internal static string LANGUAGE {
             get {
@@ -578,7 +578,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Last chatlog ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Последний лог чата ähnelt.
         /// </summary>
         internal static string LAST_CHATLOG {
             get {
@@ -587,7 +587,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Launch debug mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Режим отладки ähnelt.
         /// </summary>
         internal static string LAUNCH_DEBUG_MODE {
             get {
@@ -596,7 +596,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Launch singleplayer ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Режим сюжета ähnelt.
         /// </summary>
         internal static string LAUNCH_SINGLEPLAYER {
             get {
@@ -605,7 +605,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Launcher ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Загрузчик ähnelt.
         /// </summary>
         internal static string LAUNCHER_TITLE {
             get {
@@ -614,7 +614,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Multi core ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Многоядерность ähnelt.
         /// </summary>
         internal static string MULTI_CORE {
             get {
@@ -623,7 +623,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you need help? Join SA:MP forums... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вам нужна помощь? Присоединяйтесь форумам SA:MP... ähnelt.
         /// </summary>
         internal static string NEED_HELP_FORUMS {
             get {
@@ -632,7 +632,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Add new API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Добавить новый API ähnelt.
         /// </summary>
         internal static string NEW_API_TITLE {
             get {
@@ -641,7 +641,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No chatlog found... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Не найдены логи чата... ähnelt.
         /// </summary>
         internal static string NO_CHATLOG_FOUND {
             get {
@@ -650,7 +650,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There are no favourite lists defined. To define a new favourite list, select the &quot;API&quot; tab and create a new favourite list or restore the default entries. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Нет ни одного списка избранных. Чтобы создать новый список избранного, выберите вкладку &quot;API и создайте новый список избранного или восстановите записи по умолчанию. ähnelt.
         /// </summary>
         internal static string NO_FAVOURITES {
             get {
@@ -659,7 +659,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No favourite lists ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Нет избранных списков ähnelt.
         /// </summary>
         internal static string NO_FAVOURITES_TITLE {
             get {
@@ -668,7 +668,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No nametag status ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отключить состояние в имени тэга ähnelt.
         /// </summary>
         internal static string NO_NAMETAG_STATUS {
             get {
@@ -677,7 +677,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Not in favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Не в избранных ähnelt.
         /// </summary>
         internal static string NOT_IN_FAVOURITES {
             get {
@@ -686,7 +686,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die OK ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ОК ähnelt.
         /// </summary>
         internal static string OK {
             get {
@@ -695,7 +695,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Настройки ähnelt.
         /// </summary>
         internal static string OPTIONS {
             get {
@@ -704,7 +704,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Options ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Настройки ähnelt.
         /// </summary>
         internal static string OPTIONS_TITLE {
             get {
@@ -713,7 +713,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Page size ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Количество отображаемых строк в чате ähnelt.
         /// </summary>
         internal static string PAGE_SIZE {
             get {
@@ -722,7 +722,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ping ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пинг ähnelt.
         /// </summary>
         internal static string PING {
             get {
@@ -731,7 +731,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Players ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Игроки ähnelt.
         /// </summary>
         internal static string PLAYERS {
             get {
@@ -740,7 +740,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please type in an username. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Введите имя пользователя. ähnelt.
         /// </summary>
         internal static string PLEASE_TYPE_IN_USERNAME {
             get {
@@ -749,7 +749,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RCON password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RCON пароль ähnelt.
         /// </summary>
         internal static string RCON_PASSWORD {
             get {
@@ -758,7 +758,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - RCON password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - RCON пароль ähnelt.
         /// </summary>
         internal static string RCON_PASSWORD_TITLE {
             get {
@@ -767,7 +767,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to remove the selected API? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вы действительно хотите удалить выбранный API? ähnelt.
         /// </summary>
         internal static string REMOVE_API {
             get {
@@ -776,7 +776,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Удаление выбранного API ähnelt.
         /// </summary>
         internal static string REMOVE_API_TITLE {
             get {
@@ -785,7 +785,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Удалить выбранный API ähnelt.
         /// </summary>
         internal static string REMOVE_SELECTED_API {
             get {
@@ -794,7 +794,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to remove this server from your favourites? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вы действительно хотите удалить этот сервер из вашего списка избранных? ähnelt.
         /// </summary>
         internal static string REMOVE_SERVER_FROM_FAVOURITES {
             get {
@@ -803,7 +803,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove server from favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Удаление сервера из списка избранных ähnelt.
         /// </summary>
         internal static string REMOVE_SERVER_FROM_FAVOURITES_TITLE {
             get {
@@ -812,7 +812,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to revert the API list to default? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Вы действительно хотите восстановить список API по умолчанию? ähnelt.
         /// </summary>
         internal static string REVERT_API_LIST {
             get {
@@ -821,7 +821,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Revert API list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Сбросить список API ähnelt.
         /// </summary>
         internal static string REVERT_API_LIST_TITLE {
             get {
@@ -830,7 +830,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Revert config ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Сбросить конфигурацию ähnelt.
         /// </summary>
         internal static string REVERT_CONFIG {
             get {
@@ -839,7 +839,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Russian (Русский) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Русский ähnelt.
         /// </summary>
         internal static string RUSSIAN {
             get {
@@ -848,7 +848,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Сохранить ähnelt.
         /// </summary>
         internal static string SAVE {
             get {
@@ -857,7 +857,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saved positions ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Сохраненные позиции ähnelt.
         /// </summary>
         internal static string SAVED_POSITIONS {
             get {
@@ -866,7 +866,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select a server list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Списки серверов ähnelt.
         /// </summary>
         internal static string SELECT_API {
             get {
@@ -875,7 +875,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Select favourite list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Выбор списка избранных ähnelt.
         /// </summary>
         internal static string SELECT_FAVOURITE_LIST_TITLE {
             get {
@@ -884,7 +884,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select favourites list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Выберите список избранных ähnelt.
         /// </summary>
         internal static string SELECT_FAVOURITES_LIST {
             get {
@@ -893,7 +893,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Выбор языка (Select language) ähnelt.
         /// </summary>
         internal static string SELECT_LANGUAGE {
             get {
@@ -902,7 +902,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select server list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Выбор списка серверов ähnelt.
         /// </summary>
         internal static string SELECT_SERVER_LIST {
             get {
@@ -911,7 +911,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This server is already in your favourites. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Этот сервер уже находится в избранных. ähnelt.
         /// </summary>
         internal static string SERVER_ALREADY_IN_FAVOURITES {
             get {
@@ -920,7 +920,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This server is not in your favourites. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Этот сервер не находится в избранных. ähnelt.
         /// </summary>
         internal static string SERVER_NOT_IN_FAVOURITES {
             get {
@@ -929,7 +929,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пароль сервера ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD {
             get {
@@ -938,7 +938,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password field is empty.\r\n\r\nDo you want to continue? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пустое поле пароля сервера.\r\n\r\nВы хотите продолжить? ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD_FIELD_IS_EMPTY {
             get {
@@ -947,7 +947,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password field is empty ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Пустое поле пароля сервера ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD_FIELD_IS_EMPTY_TITLE {
             get {
@@ -956,7 +956,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Servers ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Сервера ähnelt.
         /// </summary>
         internal static string SERVERS {
             get {
@@ -965,7 +965,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server filter ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Фильтр списка серверов ähnelt.
         /// </summary>
         internal static string SERVERS_FILTER {
             get {
@@ -974,7 +974,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Extended server information ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Расширенная информация о сервере ähnelt.
         /// </summary>
         internal static string SHOW_EXTENDED_SERVER_INFORMATION {
             get {
@@ -983,7 +983,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Избранные ähnelt.
         /// </summary>
         internal static string SHOW_FAVOURITES {
             get {
@@ -992,7 +992,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Show gallery... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Показать галерею... ähnelt.
         /// </summary>
         internal static string SHOW_GALLERY {
             get {
@@ -1001,7 +1001,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Show last chatlog... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Показать последний лог чата... ähnelt.
         /// </summary>
         internal static string SHOW_LAST_CHATLOG {
             get {
@@ -1010,7 +1010,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Legacy favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Список загрузчика ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_FAVOURITES {
             get {
@@ -1019,7 +1019,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hosted list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Список Hosted ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_HOSTED_LIST {
             get {
@@ -1028,7 +1028,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Master list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Список Master ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_MASTER_LIST {
             get {
@@ -1037,7 +1037,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Don&apos;t save username ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Не сохранять имя пользователя ähnelt.
         /// </summary>
         internal static string TEMPORARY_USERNAME {
             get {
@@ -1046,7 +1046,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Timestamp ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Отображать время сообщений в чате ähnelt.
         /// </summary>
         internal static string TIMESTAMP {
             get {
@@ -1055,7 +1055,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Username ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Имя пользователя ähnelt.
         /// </summary>
         internal static string USERNAME {
             get {

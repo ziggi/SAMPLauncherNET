@@ -4,10 +4,11 @@ using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using WinFormsTranslator;
 
 namespace SAMPLauncherNET
 {
-    public class ServerListConnector
+    public class ServerListConnector : ITranslatable
     {
 
         private static DataContractJsonSerializer serverListJSONSerializer = new DataContractJsonSerializer(typeof(ServerDataContract[]));
@@ -95,26 +96,19 @@ namespace SAMPLauncherNET
             get
             {
                 Dictionary<string, Server> ret = new Dictionary<string, Server>();
-                switch (serverListType)
+                try
                 {
-                    case EServerListType.Favourites:
-                        try
-                        {
+                    switch (serverListType)
+                    {
+                        case EServerListType.Favourites:
                             using (FileStream stream = File.Open(endpoint, FileMode.Open))
                             {
                                 FavouriteDataContract[] favourites = (FavouriteDataContract[])(favouriteListJSONSerializer.ReadObject(stream));
                                 foreach (FavouriteDataContract fdc in favourites)
                                     ret.Add(fdc.host, new FavouriteServer(fdc));
                             }
-                        }
-                        catch
-                        {
-                            //
-                        }
-                        break;
-                    case EServerListType.BackendRESTful:
-                        try
-                        {
+                            break;
+                        case EServerListType.BackendRESTful:
                             using (WebClientEx wc = new WebClientEx(5000))
                             {
                                 wc.Headers.Set(HttpRequestHeader.ContentType, APIHTTPContentType);
@@ -134,15 +128,8 @@ namespace SAMPLauncherNET
                                     }
                                 }
                             }
-                        }
-                        catch
-                        {
-                            //
-                        }
-                        break;
-                    case EServerListType.LegacyFavourites:
-                        try
-                        {
+                            break;
+                        case EServerListType.LegacyFavourites:
                             using (FileStream stream = File.Open(endpoint, FileMode.Open))
                             {
                                 using (BinaryReader reader = new BinaryReader(stream))
@@ -172,15 +159,8 @@ namespace SAMPLauncherNET
                                     }
                                 }
                             }
-                        }
-                        catch
-                        {
-                            //
-                        }
-                        break;
-                    case EServerListType.LegacySAMP:
-                        try
-                        {
+                            break;
+                        case EServerListType.LegacySAMP:
                             using (WebClientEx wc = new WebClientEx(5000))
                             {
                                 wc.Headers.Set(HttpRequestHeader.ContentType, APIHTTPContentType);
@@ -194,12 +174,12 @@ namespace SAMPLauncherNET
                                         ret.Add(ip.Trim(), server);
                                 }
                             }
-                        }
-                        catch
-                        {
-                            //
-                        }
-                        break;
+                            break;
+                    }
+                }
+                catch
+                {
+                    //
                 }
                 maxServers = (uint)(ret.Count);
                 return ret;
@@ -283,6 +263,18 @@ namespace SAMPLauncherNET
                 ret.type = serverListType.ToString();
                 ret.endpoint = endpoint;
                 return ret;
+            }
+        }
+
+        public string TranslatableText
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
             }
         }
 

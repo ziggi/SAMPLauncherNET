@@ -118,340 +118,336 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ABOUT" xml:space="preserve">
-    <value>Über</value>
+    <value>ჩვენს შესახებ</value>
   </data>
   <data name="ABOUT_DESCRIPTION" xml:space="preserve">
-    <value>SAMPLauncher NET ist ein Launcher für San Andreas Multiplayer.
+    <value>SAMPLauncher NET არის SA-MP-ის ახალი სტილის ლაუნჩერი.
 
-Diese Software bleibt für immer kostenlos und ist mit GPLv3 lizenziert.
-
-Das Projekt befindet sich auf</value>
+ეს პროგრამა არის უფასო და ლიცენზირებულია GPLv3-ით.
+</value>
   </data>
   <data name="ADD_NEW_API" xml:space="preserve">
-    <value>Neue API hinzufügen</value>
+    <value>ახალი API-ს დამატება</value>
   </data>
   <data name="ADD_SERVER_TO_FAVOURITES" xml:space="preserve">
-    <value>Favorit hinzufügen</value>
+    <value>სერვერის რჩეულებში დამატება</value>
   </data>
   <data name="ALREADY_IN_FAVOURITES" xml:space="preserve">
-    <value>Bereits in den Favoriten</value>
+    <value>სერვერი უკვე არის რჩეულებში</value>
   </data>
   <data name="API" xml:space="preserve">
     <value>API</value>
   </data>
   <data name="API_ENDPOINT" xml:space="preserve">
-    <value>API Zugriffspunkt</value>
+    <value>API-ს დასასრული</value>
   </data>
   <data name="API_ENDPOINT_MISSING" xml:space="preserve">
-    <value>Bitte füge einen validen API Zugriffspunkt hinzu.</value>
+    <value>თუ შეიძლება გამოიყენეთ API-ს სწორი დასასრული</value>
   </data>
   <data name="API_ENDPOINT_MISSING_TITLE" xml:space="preserve">
-    <value>API Zugriffspunkt fehlt</value>
+    <value>API-ს დასასრული არ მოიძებნება</value>
   </data>
   <data name="API_NAME" xml:space="preserve">
-    <value>API Name</value>
+    <value>API სახელი</value>
   </data>
   <data name="API_NAME_MISSING" xml:space="preserve">
-    <value>Bitte füge einen API Namen hinzu</value>
+    <value>ჩაწერეთ API-ს დასახელება.</value>
   </data>
   <data name="API_NAME_MISSING_TITLE" xml:space="preserve">
-    <value>API Name fehlt</value>
+    <value>API სახელი გამოგრჩათ!</value>
   </data>
   <data name="API_TYPE" xml:space="preserve">
-    <value>API Typ</value>
+    <value>API ტიპი</value>
   </data>
   <data name="API_TYPE_MISSING" xml:space="preserve">
-    <value>Bitte selektiere einen API Typ</value>
-  </data>
-  <data name="API_TYPE_MISSING_TITLE" xml:space="preserve">
-    <value>API Typ fehlt</value>
+    <value>თუ შეიძლება აირჩიეთ API-ს ტიპი.</value>
   </data>
   <data name="AUDIO_MESSAGE_OFF" xml:space="preserve">
-    <value>Audio Benachrichtigungen ausblenden</value>
+    <value>აუდიო მესიჯების გათიშვა</value>
   </data>
   <data name="AUDIO_PROXY_OFF" xml:space="preserve">
-    <value>Audio Proxy nicht verwenden</value>
+    <value>აუდიო პროქსიების გათიშვა</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>შეჩერება</value>
   </data>
   <data name="CLOSE_WHEN_LAUNCHED" xml:space="preserve">
-    <value>Schließen, wenn ausgeführt</value>
+    <value>დახურვა როცა ჩაირთვება</value>
   </data>
   <data name="CONNECT" xml:space="preserve">
-    <value>Verbinden</value>
+    <value>დაკავშირება</value>
   </data>
   <data name="CONNECT_NOW" xml:space="preserve">
-    <value>Jetzt verbinden!</value>
+    <value>ახლა დაკავშირება</value>
   </data>
   <data name="CONNECT_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - Verbinden</value>
+    <value>San Andreas Multiplayer - დაკავშირება</value>
   </data>
   <data name="CONNECT_WITH_RCON" xml:space="preserve">
-    <value>Verbinde mit RCON</value>
+    <value>RCON-ით დაკავშირება</value>
   </data>
   <data name="DEBUG_MODE" xml:space="preserve">
-    <value>Debug Modus</value>
+    <value>დებაგ მოდი</value>
   </data>
   <data name="DELETE_SELECTED_IMAGES" xml:space="preserve">
-    <value>Möchetst du wirklich die ausgewählten Bilder unwideruflich löschen?</value>
+    <value>დარწმუნებული ხართ რომ გსურთ მონიშნული სურათების წაშლა?</value>
   </data>
   <data name="DELETE_SELECTED_IMAGES_TITLE" xml:space="preserve">
-    <value>Ausgewälte Bilder löschen</value>
+    <value>მონიშნული სურათების წაშლა</value>
   </data>
   <data name="DIRECT_MODE" xml:space="preserve">
-    <value>Direkter Textdraw zu Bildschirm Render Methode (langsam)</value>
+    <value>ეკრან-ზე Textdraw-ების რენდერირების სტილი (ნელი)</value>
   </data>
   <data name="DISABLE_HEAD_MOVE" xml:space="preserve">
-    <value>Kopfbewegungen abschalten</value>
+    <value>თავის მოძრაობის გათიშვა</value>
   </data>
   <data name="DUTCH" xml:space="preserve">
-    <value>Holländisch (Nederlands)</value>
+    <value>ჰოლანდიური (Nederlands)</value>
   </data>
   <data name="EDIT_API_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - API bearbeiten</value>
+    <value>San Andreas Multiplayer - API-ს დარედაქტირება</value>
   </data>
   <data name="EDIT_SELECTED_API" xml:space="preserve">
-    <value>Selektierte API bearbeiten</value>
+    <value>მონიშნული API-ს დარედაქტირება</value>
   </data>
   <data name="ENGLISH" xml:space="preserve">
-    <value>Englisch (English)</value>
+    <value>ინგლისური (English)</value>
   </data>
   <data name="ERROR" xml:space="preserve">
-    <value>Fehler</value>
+    <value>შეცდომა</value>
   </data>
   <data name="EXTENDED_SERVER_INFORMATION_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - Erweiterte Server Informationen</value>
+    <value>San Andreas Multiplayer - სერვერის დამატებითი ინფორმაცია</value>
   </data>
   <data name="FAVOURITE_LIST_NOT_SELECTED" xml:space="preserve">
-    <value>Bitte selektiere eine Favoritenliste</value>
+    <value>გთხოვთ აირჩიოთ რჩეული სერვერების სია</value>
   </data>
   <data name="FAVOURITE_LIST_NOT_SELECTED_TITLE" xml:space="preserve">
-    <value>Favoritenliste nicht selektiert</value>
+    <value>რჩეული სერვერების სია არ არის მონიშნული</value>
   </data>
   <data name="FILTER_HOSTNAME" xml:space="preserve">
-    <value>Filtere Hostname</value>
+    <value>Filter hostname</value>
   </data>
   <data name="FILTER_IP_AND_PORT" xml:space="preserve">
-    <value>Filtere IP und Port</value>
+    <value>Filter IP და port</value>
   </data>
   <data name="FILTER_LANGUAGE" xml:space="preserve">
-    <value>Filtere Sprache</value>
+    <value>Filter ენა</value>
   </data>
   <data name="FILTER_MODE" xml:space="preserve">
-    <value>Filtere Modus</value>
+    <value>Filter მოდი</value>
   </data>
   <data name="FONT_FACE" xml:space="preserve">
-    <value>Schriftart</value>
+    <value>ფონტი</value>
   </data>
   <data name="FONT_WEIGHT" xml:space="preserve">
-    <value>Schriftstärke</value>
+    <value>ფონტის ზომა</value>
   </data>
   <data name="FPS_LIMIT" xml:space="preserve">
-    <value>FPS Limit</value>
+    <value>FPS-ის ლიმიტი</value>
   </data>
   <data name="GALLERY" xml:space="preserve">
-    <value>Gallerie</value>
+    <value>გალერეა</value>
   </data>
   <data name="GAMEMODE" xml:space="preserve">
-    <value>Spielmodus</value>
+    <value>გეიმმოდი</value>
   </data>
   <data name="GEORGIAN" xml:space="preserve">
-    <value>Georgisch (ქართული)</value>
+    <value>ქართული</value>
   </data>
   <data name="GERMAN" xml:space="preserve">
-    <value>Deutsch</value>
+    <value>გერმანული (Deutsch)</value>
   </data>
   <data name="GITHUB_PROJECT" xml:space="preserve">
-    <value>GitHub Projekt SAMPLauncherNET</value>
+    <value>პროექტი GitHub-ზე SAMPLauncherNET</value>
   </data>
   <data name="HOSTNAME" xml:space="preserve">
-    <value>Hostname</value>
+    <value>სერვერის სახელი</value>
   </data>
   <data name="IME" xml:space="preserve">
-    <value>IME (Input Method Editor) freischalten</value>
+    <value>ჩაწერის მეთოდის აქტივაცია</value>
   </data>
   <data name="INPUT_ERROR" xml:space="preserve">
-    <value>Eingabefehler</value>
+    <value>შეცდომა ჩაწერის დროს</value>
   </data>
   <data name="INSERT_FILTER_HERE" xml:space="preserve">
-    <value>Füge einen Filter hier ein...</value>
+    <value>ჩაწერეთ ფილტრი...</value>
   </data>
   <data name="INSERT_RCON_PASSWORD_HERE" xml:space="preserve">
-    <value>Füge den RCON Passwort hier ein...</value>
+    <value>ჩაწერეთ RCON-ის პაროლი...</value>
   </data>
   <data name="INSERT_SERVER_PASSWORD_HERE" xml:space="preserve">
-    <value>Füge den Server Passwort hier ein...</value>
+    <value>ჩაწერეთ სერვერის პაროლი...</value>
   </data>
   <data name="INSERT_USERNAME_HERE" xml:space="preserve">
-    <value>Füge einen Benutzernamen hier ein...</value>
+    <value>ჩაწერეთ მოთამაშის სახელი...</value>
   </data>
   <data name="IP_AND_PORT" xml:space="preserve">
-    <value>IP und Port</value>
+    <value>IP და პორტი</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Sprache</value>
+    <value>ენა</value>
   </data>
   <data name="LAST_CHATLOG" xml:space="preserve">
-    <value>Letzter Chatprotokoll</value>
+    <value>ბოლო ჩატ-ლოგი</value>
   </data>
   <data name="LAUNCHER_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - Launcher</value>
+    <value>San Andreas Multiplayer - ლაუნჩერი</value>
   </data>
   <data name="LAUNCH_DEBUG_MODE" xml:space="preserve">
-    <value>Debug Modus starten</value>
+    <value>ჩართეთ დებაგ მოდი.</value>
   </data>
   <data name="LAUNCH_SINGLEPLAYER" xml:space="preserve">
-    <value>Singleplayer starten</value>
+    <value>ჩართეთ singleplayer</value>
   </data>
   <data name="MULTI_CORE" xml:space="preserve">
-    <value>Multi Core</value>
+    <value>მულტი კორი</value>
   </data>
   <data name="NEED_HELP_FORUMS" xml:space="preserve">
-    <value>Brauchst du Hilfe? Trete in den SA:MP Foren ein...</value>
+    <value>გჭირდებათ დახმარება? შემოუერთდით SA-MP-ის ფორუმს...</value>
   </data>
   <data name="NEW_API_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - API hinzuifügen</value>
+    <value>San Andreas Multiplayer - ახალი API-ს დამატება</value>
   </data>
   <data name="NOT_IN_FAVOURITES" xml:space="preserve">
-    <value>Nicht in den Favoriten</value>
+    <value>არ არის რჩეულებში</value>
   </data>
   <data name="NO_CHATLOG_FOUND" xml:space="preserve">
-    <value>Keinen Chatprotokoll gefunden...</value>
+    <value>ჩატ ლოგები არ მოიძებნება...</value>
   </data>
   <data name="NO_FAVOURITES" xml:space="preserve">
-    <value>Es existieren keine Favoritenlisten. Um eine neue Favoritenliste zu erstellen, gehe zum "API" Tab, und erstelle eine neue Favoritenliste, oder stelle die Standarteintrage wieder her.</value>
+    <value>არ მოგინიშნიათ არცერთი რჩეულების სია. ახლის გასაკეთებლად დააჭირეთ "API" -ს და გააკეთეთ ახალი რჩეულების სიაю</value>
   </data>
   <data name="NO_FAVOURITES_TITLE" xml:space="preserve">
-    <value>Keine Favoritenlisten</value>
+    <value>არ გაქვთ რჩეულების სია</value>
   </data>
   <data name="NO_NAMETAG_STATUS" xml:space="preserve">
-    <value>Kein Namensschildstatus</value>
+    <value>ნეიმთაგის სტატუსის გათიშვა</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>ოკ</value>
   </data>
   <data name="OPTIONS" xml:space="preserve">
-    <value>Optionen</value>
+    <value>პარამეტრები</value>
   </data>
   <data name="OPTIONS_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - Optionen</value>
+    <value>San Andreas Multiplayer - პარამეტრები</value>
   </data>
   <data name="PAGE_SIZE" xml:space="preserve">
-    <value>Seitengröße</value>
+    <value>გვერდის ზომა</value>
   </data>
   <data name="PING" xml:space="preserve">
-    <value>Verzögerung</value>
+    <value>პინგი</value>
   </data>
   <data name="PLAYERS" xml:space="preserve">
-    <value>Spieler</value>
+    <value>მოთამაშეები</value>
   </data>
   <data name="PLEASE_TYPE_IN_USERNAME" xml:space="preserve">
-    <value>Bitte gebe einen Benutzernamen ein.</value>
+    <value>ჩაწრეთ თქვენი ნიკნეიმი.</value>
   </data>
   <data name="RCON_PASSWORD" xml:space="preserve">
-    <value>RCON Passwort</value>
+    <value>RCON-ის პაროლი</value>
   </data>
   <data name="RCON_PASSWORD_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - RCON Passwort</value>
+    <value>San Andreas Multiplayer - RCON-ის პაროლი</value>
   </data>
   <data name="REMOVE_API" xml:space="preserve">
-    <value>Möchtest du wirklich die selektierte APIs unwideruflich löschen?</value>
+    <value>დარწმუნებული ხართ რომ გსურთ მიმდინარე API-ს წაშლა?</value>
   </data>
   <data name="REMOVE_API_TITLE" xml:space="preserve">
-    <value>Selektierte API löschen</value>
+    <value>მონიშნული API-ს წაშლა</value>
   </data>
   <data name="REMOVE_SELECTED_API" xml:space="preserve">
-    <value>Selektierte API entfernen</value>
+    <value>მონიშნული API-ს წაშლა</value>
   </data>
   <data name="REMOVE_SERVER_FROM_FAVOURITES" xml:space="preserve">
-    <value>Möchtest du wirklich diesen Server von deinen Favoriten löschen?</value>
+    <value>დარწმუნებული ხართ რომ გსურთ ამ სერვერის რჩეულებიდან წაშლა?</value>
   </data>
   <data name="REMOVE_SERVER_FROM_FAVOURITES_TITLE" xml:space="preserve">
-    <value>Favorit entfernen</value>
+    <value>სერვერის რჩეულებიდან წაშლა</value>
   </data>
   <data name="REVERT_API_LIST" xml:space="preserve">
-    <value>Möchtest du wirklich die API Liste zu ihrem Ursprungszustand zurücksetzen?</value>
+    <value>ნამდვილად გსურთ რომ შეცვალოთ API-ს სია?</value>
   </data>
   <data name="REVERT_API_LIST_TITLE" xml:space="preserve">
-    <value>API Liste zurücksetzen</value>
+    <value>API-ს სიის შეცვლა</value>
   </data>
   <data name="REVERT_CONFIG" xml:space="preserve">
-    <value>Einstellungen zurückstellen</value>
+    <value>შეცვლის პარამეტრები</value>
   </data>
   <data name="RUSSIAN" xml:space="preserve">
-    <value>Russisch (Русский)</value>
+    <value>რუსული (Русский)</value>
   </data>
   <data name="SAVE" xml:space="preserve">
-    <value>Speichern</value>
+    <value>შენახვა</value>
   </data>
   <data name="SAVED_POSITIONS" xml:space="preserve">
-    <value>Gespeicherte Positionen</value>
+    <value>შენახული პოზიციები</value>
   </data>
   <data name="SELECT_API" xml:space="preserve">
-    <value>Wähle eine Server Liste aus</value>
+    <value>სერვერების სიის არჩევა</value>
   </data>
   <data name="SELECT_FAVOURITES_LIST" xml:space="preserve">
-    <value>Selektiere Favoritenliste</value>
+    <value>რჩეული სერვერების სიის არჩევა</value>
   </data>
   <data name="SELECT_FAVOURITE_LIST_TITLE" xml:space="preserve">
-    <value>San Andreas Multiplayer - Selektiere Favoritenliste</value>
+    <value>San Andreas Multiplayer - რჩეული სერვერის სია</value>
   </data>
   <data name="SELECT_LANGUAGE" xml:space="preserve">
-    <value>Sprache auswählen (Select language)</value>
+    <value>აირჩიეთ ენა (Select language)</value>
   </data>
   <data name="SELECT_SERVER_LIST" xml:space="preserve">
-    <value>Wähle eine Serverliste aus</value>
+    <value>აირჩიეთ სერვერის სია</value>
   </data>
   <data name="SERVERS" xml:space="preserve">
-    <value>Server</value>
+    <value>სერვერები</value>
   </data>
   <data name="SERVERS_FILTER" xml:space="preserve">
-    <value>Server Filter</value>
+    <value>სერვერების გაფილტრვა</value>
   </data>
   <data name="SERVER_ALREADY_IN_FAVOURITES" xml:space="preserve">
-    <value>Dieser Server ist bereits in deinen Favoriten.</value>
+    <value>ეს სერვერი უკვე არის თქვენი რჩეული სერვერების სიაში.</value>
   </data>
   <data name="SERVER_NOT_IN_FAVOURITES" xml:space="preserve">
-    <value>Dieser Server ist nicht in deinen Favoriten.</value>
+    <value>ეს სერვერი არ არის თქვენი რჩეული სერვერების სიაში.</value>
   </data>
   <data name="SERVER_PASSWORD" xml:space="preserve">
-    <value>Server Passwort</value>
+    <value>სერვერის პაროლი</value>
   </data>
   <data name="SERVER_PASSWORD_FIELD_IS_EMPTY" xml:space="preserve">
-    <value>Server Passwort Eingabefeld ist leer.\r\n\r\nMöchtest du fortfahren?</value>
+    <value>თქვენ არ ჩაგიწერიათ სერვერის პაროლი.\r\n\r\nდარწმუნებული ხართ რომ გსურთ გააგრძელოთ?</value>
   </data>
   <data name="SERVER_PASSWORD_FIELD_IS_EMPTY_TITLE" xml:space="preserve">
-    <value>Server Passwort Einagefeld ist leer.</value>
+    <value>სერვერის პაროლი ცარიელია</value>
   </data>
   <data name="SHOW_EXTENDED_SERVER_INFORMATION" xml:space="preserve">
-    <value>Erweiterte Serverinformationen</value>
+    <value>სერვერის დამატებითი ინფორმაცია</value>
   </data>
   <data name="SHOW_FAVOURITES" xml:space="preserve">
-    <value>Favoriten</value>
+    <value>რჩეულები</value>
   </data>
   <data name="SHOW_GALLERY" xml:space="preserve">
-    <value>Zeige Gallery</value>
+    <value>გალერიის ნახვა...</value>
   </data>
   <data name="SHOW_LAST_CHATLOG" xml:space="preserve">
-    <value>Zeige letzten Chatprotokoll...</value>
+    <value>ბოლო ჩატლოგის ნახვა...</value>
   </data>
   <data name="SHOW_LEGACY_FAVOURITES" xml:space="preserve">
-    <value>Abw. komp. Favoriten</value>
+    <value>ყველა რჩეული სიის ნახვა</value>
   </data>
   <data name="SHOW_LEGACY_HOSTED_LIST" xml:space="preserve">
-    <value>Hosted Liste</value>
+    <value>დაჰოსტილი სერვერების სია</value>
   </data>
   <data name="SHOW_LEGACY_MASTER_LIST" xml:space="preserve">
-    <value>Master Liste</value>
+    <value>მასტერ სია</value>
   </data>
   <data name="TEMPORARY_USERNAME" xml:space="preserve">
-    <value>Benutzernamen nicht speichern</value>
+    <value>არ შეინახო ნიკნეიმი</value>
   </data>
   <data name="TIMESTAMP" xml:space="preserve">
-    <value>Zeitstempel</value>
+    <value>დრო</value>
   </data>
   <data name="USERNAME" xml:space="preserve">
-    <value>Benutzername</value>
+    <value>ნიკნეიმი</value>
   </data>
 </root>

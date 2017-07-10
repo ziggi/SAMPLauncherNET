@@ -22,14 +22,14 @@ namespace SAMPLauncherNET.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class en_GB {
+    internal class ge_GE {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal en_GB() {
+        internal ge_GE() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SAMPLauncherNET.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAMPLauncherNET.Languages.en-GB", typeof(en_GB).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SAMPLauncherNET.Languages.ge-GE", typeof(ge_GE).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die About ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩვენს შესახებ ähnelt.
         /// </summary>
         internal static string ABOUT {
             get {
@@ -70,11 +70,10 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die SAMPLauncher NET is a launcher for San Andreas Multiplayer.
+        ///   Sucht eine lokalisierte Zeichenfolge, die SAMPLauncher NET არის SA-MP-ის ახალი სტილის ლაუნჩერი.
         ///
-        ///This software is all time free and licenced with GPLv3.
-        ///
-        ///This project is located at ähnelt.
+        ///ეს პროგრამა არის უფასო და ლიცენზირებულია GPLv3-ით.
+        /// ähnelt.
         /// </summary>
         internal static string ABOUT_DESCRIPTION {
             get {
@@ -83,7 +82,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add new API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ახალი API-ს დამატება ähnelt.
         /// </summary>
         internal static string ADD_NEW_API {
             get {
@@ -92,7 +91,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add server to favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის რჩეულებში დამატება ähnelt.
         /// </summary>
         internal static string ADD_SERVER_TO_FAVOURITES {
             get {
@@ -101,7 +100,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Already in favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერი უკვე არის რჩეულებში ähnelt.
         /// </summary>
         internal static string ALREADY_IN_FAVOURITES {
             get {
@@ -119,7 +118,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API endpoint ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API-ს დასასრული ähnelt.
         /// </summary>
         internal static string API_ENDPOINT {
             get {
@@ -128,7 +127,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please specify a valid API endpoint ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die თუ შეიძლება გამოიყენეთ API-ს სწორი დასასრული ähnelt.
         /// </summary>
         internal static string API_ENDPOINT_MISSING {
             get {
@@ -137,7 +136,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API endpoint missing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API-ს დასასრული არ მოიძებნება ähnelt.
         /// </summary>
         internal static string API_ENDPOINT_MISSING_TITLE {
             get {
@@ -146,7 +145,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API name ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API სახელი ähnelt.
         /// </summary>
         internal static string API_NAME {
             get {
@@ -155,7 +154,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please insert an API name. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერეთ API-ს დასახელება. ähnelt.
         /// </summary>
         internal static string API_NAME_MISSING {
             get {
@@ -164,7 +163,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API name missing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API სახელი გამოგრჩათ! ähnelt.
         /// </summary>
         internal static string API_NAME_MISSING_TITLE {
             get {
@@ -173,7 +172,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API type ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API ტიპი ähnelt.
         /// </summary>
         internal static string API_TYPE {
             get {
@@ -182,7 +181,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please select an API type. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die თუ შეიძლება აირჩიეთ API-ს ტიპი. ähnelt.
         /// </summary>
         internal static string API_TYPE_MISSING {
             get {
@@ -191,16 +190,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die API type missing ähnelt.
-        /// </summary>
-        internal static string API_TYPE_MISSING_TITLE {
-            get {
-                return ResourceManager.GetString("API_TYPE_MISSING_TITLE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Audio message off ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die აუდიო მესიჯების გათიშვა ähnelt.
         /// </summary>
         internal static string AUDIO_MESSAGE_OFF {
             get {
@@ -209,7 +199,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Audio proxy off ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die აუდიო პროქსიების გათიშვა ähnelt.
         /// </summary>
         internal static string AUDIO_PROXY_OFF {
             get {
@@ -218,7 +208,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შეჩერება ähnelt.
         /// </summary>
         internal static string CANCEL {
             get {
@@ -227,7 +217,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close when launched ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დახურვა როცა ჩაირთვება ähnelt.
         /// </summary>
         internal static string CLOSE_WHEN_LAUNCHED {
             get {
@@ -236,7 +226,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დაკავშირება ähnelt.
         /// </summary>
         internal static string CONNECT {
             get {
@@ -245,7 +235,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect now! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ახლა დაკავშირება ähnelt.
         /// </summary>
         internal static string CONNECT_NOW {
             get {
@@ -254,7 +244,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Connect ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - დაკავშირება ähnelt.
         /// </summary>
         internal static string CONNECT_TITLE {
             get {
@@ -263,7 +253,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Connect with RCON ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RCON-ით დაკავშირება ähnelt.
         /// </summary>
         internal static string CONNECT_WITH_RCON {
             get {
@@ -272,7 +262,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Debug mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დებაგ მოდი ähnelt.
         /// </summary>
         internal static string DEBUG_MODE {
             get {
@@ -281,7 +271,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to delete the selected images? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დარწმუნებული ხართ რომ გსურთ მონიშნული სურათების წაშლა? ähnelt.
         /// </summary>
         internal static string DELETE_SELECTED_IMAGES {
             get {
@@ -290,7 +280,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete selected images ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მონიშნული სურათების წაშლა ähnelt.
         /// </summary>
         internal static string DELETE_SELECTED_IMAGES_TITLE {
             get {
@@ -299,7 +289,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Direct to screen textdraw render method (slow) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ეკრან-ზე Textdraw-ების რენდერირების სტილი (ნელი) ähnelt.
         /// </summary>
         internal static string DIRECT_MODE {
             get {
@@ -308,7 +298,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Disable head move ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die თავის მოძრაობის გათიშვა ähnelt.
         /// </summary>
         internal static string DISABLE_HEAD_MOVE {
             get {
@@ -317,7 +307,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Dutch (Nederlands) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჰოლანდიური (Nederlands) ähnelt.
         /// </summary>
         internal static string DUTCH {
             get {
@@ -326,7 +316,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Edit API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - API-ს დარედაქტირება ähnelt.
         /// </summary>
         internal static string EDIT_API_TITLE {
             get {
@@ -335,7 +325,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edit selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მონიშნული API-ს დარედაქტირება ähnelt.
         /// </summary>
         internal static string EDIT_SELECTED_API {
             get {
@@ -344,7 +334,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die English ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ინგლისური (English) ähnelt.
         /// </summary>
         internal static string ENGLISH {
             get {
@@ -353,7 +343,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შეცდომა ähnelt.
         /// </summary>
         internal static string ERROR {
             get {
@@ -362,7 +352,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Extended server information ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - სერვერის დამატებითი ინფორმაცია ähnelt.
         /// </summary>
         internal static string EXTENDED_SERVER_INFORMATION_TITLE {
             get {
@@ -371,7 +361,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please select a favourites list. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გთხოვთ აირჩიოთ რჩეული სერვერების სია ähnelt.
         /// </summary>
         internal static string FAVOURITE_LIST_NOT_SELECTED {
             get {
@@ -380,7 +370,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Favourites list not selected ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die რჩეული სერვერების სია არ არის მონიშნული ähnelt.
         /// </summary>
         internal static string FAVOURITE_LIST_NOT_SELECTED_TITLE {
             get {
@@ -398,7 +388,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter IP and port ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filter IP და port ähnelt.
         /// </summary>
         internal static string FILTER_IP_AND_PORT {
             get {
@@ -407,7 +397,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filter ენა ähnelt.
         /// </summary>
         internal static string FILTER_LANGUAGE {
             get {
@@ -416,7 +406,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filter mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filter მოდი ähnelt.
         /// </summary>
         internal static string FILTER_MODE {
             get {
@@ -425,7 +415,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Font-face ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ფონტი ähnelt.
         /// </summary>
         internal static string FONT_FACE {
             get {
@@ -434,7 +424,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Font-weight ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ფონტის ზომა ähnelt.
         /// </summary>
         internal static string FONT_WEIGHT {
             get {
@@ -443,7 +433,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die FPS limit ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die FPS-ის ლიმიტი ähnelt.
         /// </summary>
         internal static string FPS_LIMIT {
             get {
@@ -452,7 +442,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Gallery ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გალერეა ähnelt.
         /// </summary>
         internal static string GALLERY {
             get {
@@ -461,7 +451,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Gamemode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გეიმმოდი ähnelt.
         /// </summary>
         internal static string GAMEMODE {
             get {
@@ -470,7 +460,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Georgian (ქართული) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ქართული ähnelt.
         /// </summary>
         internal static string GEORGIAN {
             get {
@@ -479,7 +469,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die German (Deutsch) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გერმანული (Deutsch) ähnelt.
         /// </summary>
         internal static string GERMAN {
             get {
@@ -488,7 +478,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die GitHub project SAMPLauncherNET ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die პროექტი GitHub-ზე SAMPLauncherNET ähnelt.
         /// </summary>
         internal static string GITHUB_PROJECT {
             get {
@@ -497,7 +487,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hostname ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის სახელი ähnelt.
         /// </summary>
         internal static string HOSTNAME {
             get {
@@ -506,7 +496,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enable IME (Input Method Editor) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერის მეთოდის აქტივაცია ähnelt.
         /// </summary>
         internal static string IME {
             get {
@@ -515,7 +505,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Input error ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შეცდომა ჩაწერის დროს ähnelt.
         /// </summary>
         internal static string INPUT_ERROR {
             get {
@@ -524,7 +514,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert filter here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერეთ ფილტრი... ähnelt.
         /// </summary>
         internal static string INSERT_FILTER_HERE {
             get {
@@ -533,7 +523,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert RCON password here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერეთ RCON-ის პაროლი... ähnelt.
         /// </summary>
         internal static string INSERT_RCON_PASSWORD_HERE {
             get {
@@ -542,7 +532,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert server password here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერეთ სერვერის პაროლი... ähnelt.
         /// </summary>
         internal static string INSERT_SERVER_PASSWORD_HERE {
             get {
@@ -551,7 +541,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Insert player name here... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწერეთ მოთამაშის სახელი... ähnelt.
         /// </summary>
         internal static string INSERT_USERNAME_HERE {
             get {
@@ -560,7 +550,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die IP and port ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die IP და პორტი ähnelt.
         /// </summary>
         internal static string IP_AND_PORT {
             get {
@@ -569,7 +559,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ენა ähnelt.
         /// </summary>
         internal static string LANGUAGE {
             get {
@@ -578,7 +568,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Last chatlog ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ბოლო ჩატ-ლოგი ähnelt.
         /// </summary>
         internal static string LAST_CHATLOG {
             get {
@@ -587,7 +577,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Launch debug mode ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩართეთ დებაგ მოდი. ähnelt.
         /// </summary>
         internal static string LAUNCH_DEBUG_MODE {
             get {
@@ -596,7 +586,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Launch singleplayer ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩართეთ singleplayer ähnelt.
         /// </summary>
         internal static string LAUNCH_SINGLEPLAYER {
             get {
@@ -605,7 +595,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Launcher ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - ლაუნჩერი ähnelt.
         /// </summary>
         internal static string LAUNCHER_TITLE {
             get {
@@ -614,7 +604,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Multi core ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მულტი კორი ähnelt.
         /// </summary>
         internal static string MULTI_CORE {
             get {
@@ -623,7 +613,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you need help? Join SA:MP forums... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გჭირდებათ დახმარება? შემოუერთდით SA-MP-ის ფორუმს... ähnelt.
         /// </summary>
         internal static string NEED_HELP_FORUMS {
             get {
@@ -632,7 +622,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Add new API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - ახალი API-ს დამატება ähnelt.
         /// </summary>
         internal static string NEW_API_TITLE {
             get {
@@ -641,7 +631,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No chatlog found... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩატ ლოგები არ მოიძებნება... ähnelt.
         /// </summary>
         internal static string NO_CHATLOG_FOUND {
             get {
@@ -650,7 +640,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There are no favourite lists defined. To define a new favourite list, select the &quot;API&quot; tab and create a new favourite list or restore the default entries. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die არ მოგინიშნიათ არცერთი რჩეულების სია. ახლის გასაკეთებლად დააჭირეთ &quot;API&quot; -ს და გააკეთეთ ახალი რჩეულების სიაю ähnelt.
         /// </summary>
         internal static string NO_FAVOURITES {
             get {
@@ -659,7 +649,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No favourite lists ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die არ გაქვთ რჩეულების სია ähnelt.
         /// </summary>
         internal static string NO_FAVOURITES_TITLE {
             get {
@@ -668,7 +658,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No nametag status ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ნეიმთაგის სტატუსის გათიშვა ähnelt.
         /// </summary>
         internal static string NO_NAMETAG_STATUS {
             get {
@@ -677,7 +667,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Not in favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die არ არის რჩეულებში ähnelt.
         /// </summary>
         internal static string NOT_IN_FAVOURITES {
             get {
@@ -686,7 +676,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die OK ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ოკ ähnelt.
         /// </summary>
         internal static string OK {
             get {
@@ -695,7 +685,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die პარამეტრები ähnelt.
         /// </summary>
         internal static string OPTIONS {
             get {
@@ -704,7 +694,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Options ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - პარამეტრები ähnelt.
         /// </summary>
         internal static string OPTIONS_TITLE {
             get {
@@ -713,7 +703,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Page size ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გვერდის ზომა ähnelt.
         /// </summary>
         internal static string PAGE_SIZE {
             get {
@@ -722,7 +712,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ping ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die პინგი ähnelt.
         /// </summary>
         internal static string PING {
             get {
@@ -731,7 +721,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Players ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მოთამაშეები ähnelt.
         /// </summary>
         internal static string PLAYERS {
             get {
@@ -740,7 +730,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please type in an username. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ჩაწრეთ თქვენი ნიკნეიმი. ähnelt.
         /// </summary>
         internal static string PLEASE_TYPE_IN_USERNAME {
             get {
@@ -749,7 +739,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RCON password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die RCON-ის პაროლი ähnelt.
         /// </summary>
         internal static string RCON_PASSWORD {
             get {
@@ -758,7 +748,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - RCON password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - RCON-ის პაროლი ähnelt.
         /// </summary>
         internal static string RCON_PASSWORD_TITLE {
             get {
@@ -767,7 +757,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to remove the selected API? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დარწმუნებული ხართ რომ გსურთ მიმდინარე API-ს წაშლა? ähnelt.
         /// </summary>
         internal static string REMOVE_API {
             get {
@@ -776,7 +766,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მონიშნული API-ს წაშლა ähnelt.
         /// </summary>
         internal static string REMOVE_API_TITLE {
             get {
@@ -785,7 +775,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove selected API ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მონიშნული API-ს წაშლა ähnelt.
         /// </summary>
         internal static string REMOVE_SELECTED_API {
             get {
@@ -794,7 +784,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to remove this server from your favourites? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დარწმუნებული ხართ რომ გსურთ ამ სერვერის რჩეულებიდან წაშლა? ähnelt.
         /// </summary>
         internal static string REMOVE_SERVER_FROM_FAVOURITES {
             get {
@@ -803,7 +793,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove server from favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის რჩეულებიდან წაშლა ähnelt.
         /// </summary>
         internal static string REMOVE_SERVER_FROM_FAVOURITES_TITLE {
             get {
@@ -812,7 +802,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you really want to revert the API list to default? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ნამდვილად გსურთ რომ შეცვალოთ API-ს სია? ähnelt.
         /// </summary>
         internal static string REVERT_API_LIST {
             get {
@@ -821,7 +811,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Revert API list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die API-ს სიის შეცვლა ähnelt.
         /// </summary>
         internal static string REVERT_API_LIST_TITLE {
             get {
@@ -830,7 +820,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Revert config ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შეცვლის პარამეტრები ähnelt.
         /// </summary>
         internal static string REVERT_CONFIG {
             get {
@@ -839,7 +829,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Russian (Русский) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die რუსული (Русский) ähnelt.
         /// </summary>
         internal static string RUSSIAN {
             get {
@@ -848,7 +838,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შენახვა ähnelt.
         /// </summary>
         internal static string SAVE {
             get {
@@ -857,7 +847,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saved positions ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die შენახული პოზიციები ähnelt.
         /// </summary>
         internal static string SAVED_POSITIONS {
             get {
@@ -866,7 +856,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select a server list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერების სიის არჩევა ähnelt.
         /// </summary>
         internal static string SELECT_API {
             get {
@@ -875,7 +865,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - Select favourite list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die San Andreas Multiplayer - რჩეული სერვერის სია ähnelt.
         /// </summary>
         internal static string SELECT_FAVOURITE_LIST_TITLE {
             get {
@@ -884,7 +874,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select favourites list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die რჩეული სერვერების სიის არჩევა ähnelt.
         /// </summary>
         internal static string SELECT_FAVOURITES_LIST {
             get {
@@ -893,7 +883,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select language ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die აირჩიეთ ენა (Select language) ähnelt.
         /// </summary>
         internal static string SELECT_LANGUAGE {
             get {
@@ -902,7 +892,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select server list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die აირჩიეთ სერვერის სია ähnelt.
         /// </summary>
         internal static string SELECT_SERVER_LIST {
             get {
@@ -911,7 +901,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This server is already in your favourites. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ეს სერვერი უკვე არის თქვენი რჩეული სერვერების სიაში. ähnelt.
         /// </summary>
         internal static string SERVER_ALREADY_IN_FAVOURITES {
             get {
@@ -920,7 +910,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This server is not in your favourites. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ეს სერვერი არ არის თქვენი რჩეული სერვერების სიაში. ähnelt.
         /// </summary>
         internal static string SERVER_NOT_IN_FAVOURITES {
             get {
@@ -929,7 +919,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის პაროლი ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD {
             get {
@@ -938,7 +928,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password field is empty.\r\n\r\nDo you want to continue? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die თქვენ არ ჩაგიწერიათ სერვერის პაროლი.\r\n\r\nდარწმუნებული ხართ რომ გსურთ გააგრძელოთ? ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD_FIELD_IS_EMPTY {
             get {
@@ -947,7 +937,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server password field is empty ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის პაროლი ცარიელია ähnelt.
         /// </summary>
         internal static string SERVER_PASSWORD_FIELD_IS_EMPTY_TITLE {
             get {
@@ -956,7 +946,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Servers ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერები ähnelt.
         /// </summary>
         internal static string SERVERS {
             get {
@@ -965,7 +955,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Server filter ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერების გაფილტრვა ähnelt.
         /// </summary>
         internal static string SERVERS_FILTER {
             get {
@@ -974,7 +964,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Extended server information ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die სერვერის დამატებითი ინფორმაცია ähnelt.
         /// </summary>
         internal static string SHOW_EXTENDED_SERVER_INFORMATION {
             get {
@@ -983,7 +973,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die რჩეულები ähnelt.
         /// </summary>
         internal static string SHOW_FAVOURITES {
             get {
@@ -992,7 +982,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Show gallery... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die გალერიის ნახვა... ähnelt.
         /// </summary>
         internal static string SHOW_GALLERY {
             get {
@@ -1001,7 +991,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Show last chatlog... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ბოლო ჩატლოგის ნახვა... ähnelt.
         /// </summary>
         internal static string SHOW_LAST_CHATLOG {
             get {
@@ -1010,7 +1000,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Legacy favourites ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ყველა რჩეული სიის ნახვა ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_FAVOURITES {
             get {
@@ -1019,7 +1009,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hosted list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დაჰოსტილი სერვერების სია ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_HOSTED_LIST {
             get {
@@ -1028,7 +1018,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Master list ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die მასტერ სია ähnelt.
         /// </summary>
         internal static string SHOW_LEGACY_MASTER_LIST {
             get {
@@ -1037,7 +1027,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Don&apos;t save username ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die არ შეინახო ნიკნეიმი ähnelt.
         /// </summary>
         internal static string TEMPORARY_USERNAME {
             get {
@@ -1046,7 +1036,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Timestamp ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die დრო ähnelt.
         /// </summary>
         internal static string TIMESTAMP {
             get {
@@ -1055,7 +1045,7 @@ namespace SAMPLauncherNET.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Username ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ნიკნეიმი ähnelt.
         /// </summary>
         internal static string USERNAME {
             get {
