@@ -121,7 +121,8 @@
     <value>О программе</value>
   </data>
   <data name="ABOUT_DESCRIPTION" xml:space="preserve">
-    <value>SAMPLauncher NET - это загрузчик для San Andreas Multiplayer.
+    <value>
+SAMPLauncher NET - это загрузчик для San Andreas Multiplayer.
 
 Это программное обеспечение бесплатно и лицензировано по лицензии GPLv3.
 
@@ -267,6 +268,9 @@
   </data>
   <data name="HOSTNAME" xml:space="preserve">
     <value>Название сервера</value>
+  </data>
+  <data name="HOST_AND_PORT" xml:space="preserve">
+    <value>Хост и порт</value>
   </data>
   <data name="IME" xml:space="preserve">
     <value>Включить IME (Input Method Editor - Редактор метода ввода)</value>
