@@ -58,7 +58,9 @@ namespace SAMPLauncherNET
                 foreach (IDisposable i in list)
                 {
                     if (i != null)
+                    {
                         i.Dispose();
+                    }
                 }
             }
         }
@@ -75,10 +77,14 @@ namespace SAMPLauncherNET
             if (ret.Length > 0)
             {
                 if (ret[ret.Length - 1] != character)
+                {
                     ret += character;
+                }
             }
             else
+            {
                 ret += character;
+            }
             return ret;
         }
 
@@ -107,36 +113,66 @@ namespace SAMPLauncherNET
                 string[] files = Directory.GetFiles(directory, searchPattern, searchOption);
                 ret = new FileResource[files.Length];
                 for (int i = 0; i < ret.Length; i++)
+                {
                     ret[i] = new FileResource(files[i]);
+                }
             }
             if (ret == null)
+            {
                 ret = new FileResource[0];
+            }
             return ret;
         }
 
         /// <summary>
-        /// Get integer from text field
+        /// Get integer from text
         /// </summary>
-        /// <param name="textField">Text field</param>
+        /// <param name="text">Text</param>
         /// <returns>Integer</returns>
-        public static int GetInt(string text, int defaultValue =0)
+        public static int GetInt(string text)
+        {
+            return GetInt(text, 0);
+        }
+
+        /// <summary>
+        /// Get integer from text
+        /// </summary>
+        /// <param name="text">Text</param>
+        /// <param name="defaultValue">Default value</param>
+        /// <returns>Integer</returns>
+        public static int GetInt(string text, int defaultValue)
         {
             int ret = 0;
             if (!(int.TryParse(text, out ret)))
+            {
                 ret = 0;
+            }
             return ret;
         }
 
         /// <summary>
-        /// Get floating point number from text field
+        /// Get floating point number from text
         /// </summary>
-        /// <param name="textField">Text field</param>
-        /// <returns>FLoating point number</returns>
-        public static float GetFloat(string text, float defaultValue = 0.0f)
+        /// <param name="text">Text</param>
+        /// <returns>Floating point number</returns>
+        public static float GetFloat(string text)
+        {
+            return GetFloat(text, 0.0f);
+        }
+
+        /// <summary>
+        /// Get floating point number from text
+        /// </summary>
+        /// <param name="text">Text</param>
+        /// <param name="defaultValue">Default value</param>
+        /// <returns>Floating point number</returns>
+        public static float GetFloat(string text, float defaultValue)
         {
             float ret = 0.0f;
             if (!(float.TryParse(text, out ret)))
+            {
                 ret = 0.0f;
+            }
             return ret;
         }
 
@@ -153,7 +189,9 @@ namespace SAMPLauncherNET
             {
                 Random rand = new Random();
                 for (uint i = 0U; i != length; i++)
+                {
                     ret[i] = characters[rand.Next(characters.Length)];
+                }
             }
             return new string(ret);
         }

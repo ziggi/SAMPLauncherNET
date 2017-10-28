@@ -26,32 +26,32 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Load servers
         /// </summary>
-        private List<KeyValuePair<Server, int>> loadServers = new List<KeyValuePair<Server, int>>();
+        private readonly List<KeyValuePair<Server, int>> loadServers = new List<KeyValuePair<Server, int>>();
 
         /// <summary>
         /// Loaded servers
         /// </summary>
-        private List<KeyValuePair<Server, int>> loadedServers = new List<KeyValuePair<Server, int>>();
+        private readonly List<KeyValuePair<Server, int>> loadedServers = new List<KeyValuePair<Server, int>>();
 
         /// <summary>
         /// Registered servers
         /// </summary>
-        private Dictionary<string, Server> registeredServers = new Dictionary<string, Server>();
+        private readonly Dictionary<string, Server> registeredServers = new Dictionary<string, Server>();
 
         /// <summary>
-        /// Thread
+        /// Servers thread
         /// </summary>
-        private Thread thread = null;
+        private Thread serversThread;
 
         /// <summary>
         /// Row thread
         /// </summary>
-        private Thread rowThread = null;
+        private Thread rowThread;
 
         /// <summary>
         /// Row thread success
         /// </summary>
-        private bool rowThreadSuccess = false;
+        private bool rowThreadSuccess;
 
         /// <summary>
         /// APIs
@@ -61,7 +61,7 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Configuration
         /// </summary>
-        private SAMPConfig config = SAMP.SAMPConfig;
+        private readonly SAMPConfig config = SAMP.SAMPConfig;
 
         /// <summary>
         /// Query first server
@@ -72,6 +72,21 @@ namespace SAMPLauncherNET
         /// Selected API index
         /// </summary>
         private int selectedAPIIndex = -1;
+
+        /// <summary>
+        /// Loaded gallery
+        /// </summary>
+        private readonly Dictionary<string, Image> loadedGallery = new Dictionary<string, Image>();
+
+        /// <summary>
+        /// Gallery thread
+        /// </summary>
+        private Thread galleryThread;
+
+        /// <summary>
+        /// Last gallery image index
+        /// </summary>
+        private uint lastGalleryImageIndex;
 
         /// <summary>
         /// Selected browser
@@ -115,6 +130,26 @@ namespace SAMPLauncherNET
         }
 
         /// <summary>
+        /// Favourite lists
+        /// </summary>
+        public IEnumerable<IndexedServerListConnector> FavouriteLists
+        {
+            get
+            {
+                List<IndexedServerListConnector> ret = new List<IndexedServerListConnector>();
+                for (int i = 0; i < apis.Count; i++)
+                {
+                    ServerListConnector slc = apis[i];
+                    if ((slc.ServerListType == EServerListType.Favourites) || (slc.ServerListType == EServerListType.LegacyFavourites))
+                    {
+                        ret.Add(new IndexedServerListConnector(slc, i));
+                    }
+                }
+                return ret;
+            }
+        }
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public MainForm()
@@ -134,7 +169,7 @@ namespace SAMPLauncherNET
                 }
                 ++i;
             }
-            assemblyVersionLabel.Text += ": " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            assemblyVersionLabel.Text += ": " + Assembly.GetExecutingAssembly().GetName().Version;
             fileVersionLabel.Text += ": " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             productVersionLabel.Text += ": " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
@@ -142,7 +177,6 @@ namespace SAMPLauncherNET
             material_skin_manager.AddFormToManage(this);
             material_skin_manager.Theme = MaterialSkinManager.Themes.DARK;
             material_skin_manager.ColorScheme = new ColorScheme(Primary.Blue700, Primary.Blue800, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
-            //material_skin_manager.ColorScheme = new ColorScheme(Primary.DeepOrange400, Primary.DeepOrange600, Primary.DeepOrange100, Accent.Orange100, TextShade.WHITE);
 
             galleryFileSystemWatcher.Path = SAMP.GalleryPath;
             textFileSystemWatcher.Path = SAMP.ConfigPath;
@@ -150,11 +184,12 @@ namespace SAMPLauncherNET
             lastChatlogTextBox.Text = SAMP.Chatlog;
             savedPositionsTextBox.Text = SAMP.SavedPositions;
 
+            ReloadVersions();
             ReloadSAMPConfig();
             ReloadAPIs();
             ReloadLauncherConfig();
             ReloadDeveloperToolsConfig();
-            thread = new Thread(() =>
+            serversThread = new Thread(() =>
             {
                 while (true)
                 {
@@ -163,16 +198,27 @@ namespace SAMPLauncherNET
                     {
                         foreach (KeyValuePair<Server, int> kv in loadServers)
                         {
-                            if (kv.Key.IsDataFetched(ERequestType.Ping) || kv.Key.IsDataFetched(ERequestType.Information))
+                            if ((kv.Key is FavouriteServer) || (kv.Key is BackendRESTfulServer))
+                            {
                                 rlist.Add(kv);
+                            }
                             else
                             {
-                                kv.Key.SendQueryWhenExpired(ERequestType.Ping, 5000U);
-                                kv.Key.SendQueryWhenExpired(ERequestType.Information, 5000U);
+                                if (kv.Key.IsDataFetched(ERequestType.Ping) || kv.Key.IsDataFetched(ERequestType.Information))
+                                {
+                                    rlist.Add(kv);
+                                }
+                                else
+                                {
+                                    kv.Key.SendQueryWhenExpired(ERequestType.Ping, 5000U);
+                                    kv.Key.SendQueryWhenExpired(ERequestType.Information, 5000U);
+                                }
                             }
                         }
                         foreach (KeyValuePair<Server, int> kv in rlist)
+                        {
                             loadServers.Remove(kv);
+                        }
                     }
                     lock (loadedServers)
                     {
@@ -181,7 +227,7 @@ namespace SAMPLauncherNET
                     rlist.Clear();
                 }
             });
-            thread.Start();
+            serversThread.Start();
         }
 
         /// <summary>
@@ -230,7 +276,9 @@ namespace SAMPLauncherNET
                         if (trimmed_name.Length > 4)
                         {
                             if (trimmed_name.StartsWith("{$") && trimmed_name.EndsWith("$}"))
+                            {
                                 slc.TranslatableText = Translator.GetTranslation(trimmed_name.Substring(2, trimmed_name.Length - 4));
+                            }
                         }
                         dr.ItemArray = new object[] { i, slc.Name, slc.ServerListType.ToString(), slc.Endpoint };
                         apiDataTable.Rows.Add(dr);
@@ -238,7 +286,9 @@ namespace SAMPLauncherNET
                 }
                 selectAPIComboBox.Items.AddRange(apis.ToArray());
                 if (apis.Count > 0)
+                {
                     selectAPIComboBox.SelectedIndex = 0;
+                }
             }
         }
 
@@ -259,7 +309,9 @@ namespace SAMPLauncherNET
                         slc.NotLoaded = false;
                         Dictionary<string, Server> l = slc.ServerListIO;
                         foreach (Server server in l.Values)
+                        {
                             loadServers.Add(new KeyValuePair<Server, int>(server, index));
+                        }
                     }
                 }
                 UpdateServerListFilter();
@@ -276,7 +328,9 @@ namespace SAMPLauncherNET
             uint c = 0U;
             int index = selectedAPIIndex;
             if ((index >= 0) && (index < apis.Count))
+            {
                 c = apis[index].ServerCount;
+            }
             serverCountLabel.Text = Translator.GetTranslation("SERVERS") + ": " + c;
         }
 
@@ -297,7 +351,9 @@ namespace SAMPLauncherNET
             if (server != null)
             {
                 if (server.IsDataFetched(ERequestType.Ping) && server.IsDataFetched(ERequestType.Information) && server.IsDataFetched(ERequestType.Rules) && server.IsDataFetched(ERequestType.Clients))
+                {
                     ReloadSelectedServerRow();
+                }
                 rowThread = new Thread(() => RequestServerInfo(server));
                 rowThread.Start();
                 ret = true;
@@ -322,14 +378,18 @@ namespace SAMPLauncherNET
                         while ((!server.IsDataFetched(ERequestType.Ping)) && (!server.IsDataFetched(ERequestType.Information)))
                         {
                             if (DateTime.Now.Subtract(timestamp).TotalMilliseconds >= 1000)
+                            {
                                 break;
+                            }
                         }
                         if (server.IsDataFetched(ERequestType.Ping))
+                        {
                             dgvr.Cells[1].Value = server.Ping;
+                        }
                         if (server.IsDataFetched(ERequestType.Information))
                         {
                             dgvr.Cells[2].Value = server.Hostname;
-                            dgvr.Cells[3].Value = server.PlayerCount + "/" + server.MaxPlayers;
+                            dgvr.Cells[3].Value = new PlayerCountString(server.PlayerCount, server.MaxPlayers);
                             dgvr.Cells[4].Value = server.Gamemode;
                             dgvr.Cells[5].Value = server.Language;
                         }
@@ -368,16 +428,20 @@ namespace SAMPLauncherNET
                         dr.ItemArray = row;
                         playersDataTable.Rows.Add(dr);
                         if (i == si)
+                        {
                             cs = true;
+                        }
                         ++i;
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 if (cs)
+                {
                     playersGridView.Rows[si].Selected = true;
+                }
                 si = 0;
                 cs = false;
                 foreach (DataGridViewRow dgvr in rulesGridView.SelectedRows)
@@ -398,16 +462,20 @@ namespace SAMPLauncherNET
                         dr.ItemArray = row;
                         rulesDataTable.Rows.Add(dr);
                         if (i == si)
+                        {
                             cs = true;
+                        }
                         ++i;
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 if (cs)
+                {
                     rulesGridView.Rows[si].Selected = true;
+                }
             }
         }
 
@@ -430,10 +498,10 @@ namespace SAMPLauncherNET
         /// </summary>
         /// <param name="str">String</param>
         /// <returns>Escaped filer string</returns>
-        private string EscapeFilterString(string str)
+        private static string EscapeFilterString(string str)
         {
             StringBuilder ret = new StringBuilder();
-            foreach (char c in str.ToCharArray())
+            foreach (char c in str)
             {
                 switch (c)
                 {
@@ -464,13 +532,21 @@ namespace SAMPLauncherNET
             if (ft.Length > 0)
             {
                 if (filterHostnameRadioButton.Checked)
+                {
                     filter.Append(" AND `Hostname` LIKE '%");
+                }
                 else if (filterModeRadioButton.Checked)
+                {
                     filter.Append(" AND `Mode` LIKE '%");
+                }
                 else if (filterLanguageRadioButton.Checked)
+                {
                     filter.Append(" AND `Language` LIKE '%");
+                }
                 else
+                {
                     filter.Append(" AND `IP and port` LIKE '%");
+                }
                 filter.Append(ft);
                 filter.Append("%'");
             }
@@ -487,11 +563,15 @@ namespace SAMPLauncherNET
         {
             DataRow[] rows = serversDataTable.Select("GroupID=" + index);
             foreach (DataRow row in rows)
+            {
                 row.Delete();
+            }
             lock (loadServers)
             {
                 foreach (Server server in servers.Values)
+                {
                     loadServers.Add(new KeyValuePair<Server, int>(server, index));
+                }
             }
         }
 
@@ -501,15 +581,20 @@ namespace SAMPLauncherNET
         /// <param name="rconPassword">RCON password</param>
         private void Connect(Server server = null, string rconPassword = null, bool quitWhenDone = false)
         {
-            if (server == null)
-                server = SelectedServer;
-            if (server != null)
+            Server s = server;
+            if (s == null)
             {
-                ConnectForm cf = new ConnectForm(!(server.HasPassword));
+                s = SelectedServer;
+            }
+            if (s != null)
+            {
+                ConnectForm cf = new ConnectForm(!(s.HasPassword));
                 DialogResult result = cf.ShowDialog();
                 DialogResult = DialogResult.None;
                 if (result == DialogResult.OK)
-                    SAMP.LaunchSAMP(server, cf.Username, server.HasPassword ? cf.ServerPassword : null, rconPassword, false, quitWhenDone, this);
+                {
+                    SAMP.LaunchSAMP(s, cf.Username, s.HasPassword ? cf.ServerPassword : null, rconPassword, false, quitWhenDone, this);
+                }
             }
         }
 
@@ -520,9 +605,13 @@ namespace SAMPLauncherNET
         private static void VisitWebsite(string url)
         {
             if (!(url.Contains("://")))
+            {
                 url = "http://" + url;
+            }
             if (MessageBox.Show(url + "\r\n\r\n" + Translator.GetTranslation("VISIT_WEBSITE_MESSAGE"), Translator.GetTranslation("VISIT_WEBSITE_TITLE") + " " + url, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
                 Process.Start(url);
+            }
         }
 
         /// <summary>
@@ -531,8 +620,8 @@ namespace SAMPLauncherNET
         private void ReloadLauncherConfig()
         {
             LauncherConfigDataContract lcdc = SAMP.LauncherConfigIO;
-            developmentDirectorySingleLineTextField.Text = lcdc.developmentDirectory;
-            selectedAPIIndex = lcdc.lastSelectedServerListAPI;
+            developmentDirectorySingleLineTextField.Text = lcdc.DevelopmentDirectory;
+            selectedAPIIndex = lcdc.LastSelectedServerListAPI;
             selectAPIComboBox.SelectedIndex = selectedAPIIndex;
         }
 
@@ -541,20 +630,25 @@ namespace SAMPLauncherNET
         /// </summary>
         private void ReloadGallery()
         {
-            if (mainTabControl.SelectedTab == galleryPage)
+            if (galleryThread != null)
             {
-                galleryListView.Clear();
-                galleryImageList.Images.Clear();
-                Dictionary<string, Image> images = SAMP.GalleryImages;
-                int i = 0;
-                foreach (KeyValuePair<string, Image> kv in images)
-                {
-                    galleryImageList.Images.Add(kv.Value);
-                    ListViewItem lvi = galleryListView.Items.Add(kv.Key.Substring(SAMP.GalleryPath.Length + 1), i);
-                    lvi.Tag = kv.Key;
-                    ++i;
-                }
+                galleryThread.Abort();
             }
+            galleryListView.Clear();
+            galleryImageList.Images.Clear();
+            loadedGallery.Clear();
+            galleryThread = new Thread(() =>
+            {
+                foreach (string path in SAMP.GalleryImagePaths)
+                {
+                    Image image = ThumbnailsCache.GetThumbnail(path);
+                    lock (loadedGallery)
+                    {
+                        loadedGallery.Add(path, image);
+                    }
+                }
+            });
+            galleryThread.Start();
         }
 
         /// <summary>
@@ -566,7 +660,9 @@ namespace SAMPLauncherNET
             {
                 string file_name = (string)(item.Tag);
                 if (File.Exists(file_name))
+                {
                     Process.Start(file_name);
+                }
             }
         }
 
@@ -580,7 +676,9 @@ namespace SAMPLauncherNET
             {
                 string file_name = (string)(item.Tag);
                 if (File.Exists(file_name))
+                {
                     files.Add(file_name);
+                }
             }
             if (files.Count > 0)
             {
@@ -593,9 +691,9 @@ namespace SAMPLauncherNET
                         {
                             File.Delete(file);
                         }
-                        catch
+                        catch (Exception e)
                         {
-                            //
+                            Console.Error.WriteLine(e.Message);
                         }
                     }
                     galleryFileSystemWatcher.EnableRaisingEvents = true;
@@ -622,6 +720,21 @@ namespace SAMPLauncherNET
             config.FontFace = fontFaceSingleLineTextField.Text;
             config.FontWeight = fontWeightCheckBox.Checked;
             config.Save();
+        }
+
+        /// <summary>
+        /// Reload versions
+        /// </summary>
+        private void ReloadVersions()
+        {
+            SAMPVersion current_version = SAMPProvider.CurrentVersion;
+            versionsListView.Clear();
+            foreach (SAMPVersion version in SAMPProvider.Versions)
+            {
+                ListViewItem lvi = versionsListView.Items.Add(version.ToString());
+                lvi.Tag = version;
+                lvi.ImageIndex = ((current_version == version) ? 0 : 1);
+            }
         }
 
         /// <summary>
@@ -679,42 +792,47 @@ namespace SAMPLauncherNET
             string directory = Utils.AppendCharacterToString(developmentDirectorySingleLineTextField.Text, '\\');
             if (Directory.Exists(directory))
             {
-                FillItemsInCheckedListBox(developerToolsGamemodesCheckedListBox, Utils.GetFilesFromDirectory(directory + "gamemodes", "*.amx", SearchOption.AllDirectories), dtcdc.gamemodes);
-                FillItemsInCheckedListBox(developerToolsFilterscriptsCheckedListBox, Utils.GetFilesFromDirectory(directory + "filterscripts", "*.amx", SearchOption.AllDirectories), dtcdc.filterscripts);
-                FillItemsInCheckedListBox(developerToolsPluginsCheckedListBox, Utils.GetFilesFromDirectory(directory + "plugins", "*.amx", SearchOption.AllDirectories), dtcdc.plugins);
+                FillItemsInCheckedListBox(developerToolsGamemodesCheckedListBox, Utils.GetFilesFromDirectory(directory + "gamemodes", "*.amx", SearchOption.AllDirectories), dtcdc.Gamemodes);
+                FillItemsInCheckedListBox(developerToolsFilterscriptsCheckedListBox, Utils.GetFilesFromDirectory(directory + "filterscripts", "*.amx", SearchOption.AllDirectories), dtcdc.Filterscripts);
+                FillItemsInCheckedListBox(developerToolsPluginsCheckedListBox, Utils.GetFilesFromDirectory(directory + "plugins", "*.amx", SearchOption.AllDirectories), dtcdc.Plugins);
             }
         }
 
         /// <summary>
         /// Save developer tools configuration
         /// </summary>
-        private DeveloperToolsConfigDataContract SaveDeveloperToolsConfig()
+        private void SaveDeveloperToolsConfig()
         {
-            DeveloperToolsConfigDataContract ret = SAMP.DeveloperToolsConfigIO;
+            DeveloperToolsConfigDataContract dtcdc = SAMP.DeveloperToolsConfigIO;
             List<string> entries = new List<string>();
             foreach (var item in developerToolsGamemodesCheckedListBox.CheckedItems)
+            {
                 entries.Add(item.ToString());
-            ret.gamemodes = entries.ToArray();
+            }
+            dtcdc.Gamemodes = entries.ToArray();
             entries.Clear();
             foreach (var item in developerToolsFilterscriptsCheckedListBox.CheckedItems)
+            {
                 entries.Add(item.ToString());
-            ret.filterscripts = entries.ToArray();
+            }
+            dtcdc.Filterscripts = entries.ToArray();
             entries.Clear();
             foreach (var item in developerToolsPluginsCheckedListBox.CheckedItems)
-                entries.Add(item.ToString());
-            ret.plugins = entries.ToArray();
-            entries.Clear();
-            ret.hostname = developerToolsHostnameSingleLineTextField.Text;
-            ret.port = Utils.GetInt(developerToolsPortSingleLineTextField.Text);
-            ret.password = developerToolsServerPasswordSingleLineTextField.Text;
-            ret.rconPassword = developerToolsRCONPasswordSingleLineTextField.Text;
-            if (ret.rconPassword.Trim().Length <= 0)
             {
-                ret.rconPassword = Utils.GetRandomString(16);
-                developerToolsRCONPasswordSingleLineTextField.Text = ret.rconPassword;
+                entries.Add(item.ToString());
             }
-            SAMP.DeveloperToolsConfigIO = ret;
-            return ret;
+            dtcdc.Plugins = entries.ToArray();
+            entries.Clear();
+            dtcdc.Hostname = developerToolsHostnameSingleLineTextField.Text;
+            dtcdc.Port = Utils.GetInt(developerToolsPortSingleLineTextField.Text);
+            dtcdc.Password = developerToolsServerPasswordSingleLineTextField.Text;
+            dtcdc.RCONPassword = developerToolsRCONPasswordSingleLineTextField.Text;
+            if (dtcdc.RCONPassword.Trim().Length <= 0)
+            {
+                dtcdc.RCONPassword = Utils.GetRandomString(16);
+                developerToolsRCONPasswordSingleLineTextField.Text = dtcdc.RCONPassword;
+            }
+            SAMP.DeveloperToolsConfigIO = dtcdc;
         }
 
         /// <summary>
@@ -722,7 +840,7 @@ namespace SAMPLauncherNET
         /// </summary>
         private void AddSelectedAPI()
         {
-            APIForm apif = new APIForm();
+            APIForm apif = new APIForm(null);
             DialogResult result = apif.ShowDialog();
             DialogResult = DialogResult.None;
             if (result == DialogResult.OK)
@@ -766,28 +884,21 @@ namespace SAMPLauncherNET
         {
             if (MessageBox.Show(Translator.GetTranslation("REMOVE_API"), Translator.GetTranslation("REMOVE_API_TITLE"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                /*foreach (DataGridViewRow dgvr in apiGridView.SelectedRows)
-                {
-                    int index = (int)(dgvr.Cells[0].Value);
-                    if ((index >= 0) && (index < apis.Count))
-                    {
-                        apis.RemoveAt(index);
-                        SAMP.APIIO = apis;
-                        ReloadAPIs();
-                    }
-                    break;
-                }*/
                 List<ServerListConnector> rl = new List<ServerListConnector>();
-                List<ServerListConnector> apis = SAMP.APIIO;
+                List<ServerListConnector> apis_result = SAMP.APIIO;
                 foreach (DataGridViewRow dgvr in apiGridView.SelectedRows)
                 {
                     int index = (int)(dgvr.Cells[0].Value);
-                    if (apis.Count > index)
-                        rl.Add(apis[index]);
+                    if (apis_result.Count > index)
+                    {
+                        rl.Add(apis_result[index]);
+                    }
                 }
                 foreach (ServerListConnector item in rl)
-                    apis.Remove(item);
-                SAMP.APIIO = apis;
+                {
+                    apis_result.Remove(item);
+                }
+                SAMP.APIIO = apis_result;
                 ReloadAPIs();
             }
         }
@@ -816,15 +927,17 @@ namespace SAMPLauncherNET
                 }
             }
             else if (promptWhenError)
+            {
                 MessageBox.Show(Translator.GetTranslation("SERVER_NOT_IN_FAVOURITES"), Translator.GetTranslation("NOT_IN_FAVOURITES"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
-        /// Server list timer tick event
+        /// Multi-threaded lists timer tick event
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="e">Event arguments</param>
-        private void serverListTimer_Tick(object sender, EventArgs e)
+        private void multithreadedListsTimer_Tick(object sender, EventArgs e)
         {
             lock (loadedServers)
             {
@@ -834,13 +947,17 @@ namespace SAMPLauncherNET
                     object[] row = new object[7];
                     row[0] = kv.Value;
                     if (kv.Key.IsDataFetched(ERequestType.Ping))
+                    {
                         row[1] = kv.Key.Ping;
+                    }
                     else
+                    {
                         row[1] = 1000U;
+                    }
                     if (kv.Key.IsDataFetched(ERequestType.Information))
                     {
                         row[2] = kv.Key.Hostname;
-                        row[3] = kv.Key.PlayerCount + "/" + kv.Key.MaxPlayers;
+                        row[3] = new PlayerCountString(kv.Key.PlayerCount, kv.Key.MaxPlayers);
                         row[4] = kv.Key.Gamemode;
                         row[5] = kv.Key.Language;
                     }
@@ -855,13 +972,19 @@ namespace SAMPLauncherNET
                     dr.ItemArray = row;
                     serversDataTable.Rows.Add(dr);
                     if (!(registeredServers.ContainsKey(kv.Key.IPPortString)))
+                    {
                         registeredServers.Add(kv.Key.IPPortString, kv.Key);
+                    }
                     if (queryFirstServer)
+                    {
                         queryFirstServer = !(EnterRow());
+                    }
                     lock (apis)
                     {
                         if ((kv.Value >= 0) && (kv.Value < apis.Count))
+                        {
                             ++apis[kv.Value].ServerCount;
+                        }
                     }
                 }
                 loadedServers.Clear();
@@ -871,6 +994,18 @@ namespace SAMPLauncherNET
             {
                 rowThreadSuccess = false;
                 ReloadSelectedServerRow();
+            }
+
+            lock (loadedGallery)
+            {
+                foreach (KeyValuePair<string, Image> kv in loadedGallery)
+                {
+                    galleryImageList.Images.Add(kv.Value);
+                    ListViewItem lvi = galleryListView.Items.Add(kv.Key.Substring(SAMP.GalleryPath.Length + 1), (int)lastGalleryImageIndex);
+                    lvi.Tag = kv.Key;
+                    ++lastGalleryImageIndex;
+                }
+                loadedGallery.Clear();
             }
         }
 
@@ -891,9 +1026,7 @@ namespace SAMPLauncherNET
         /// <param name="e">Form closed event args</param>
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LauncherConfigDataContract lcdc = new LauncherConfigDataContract();
-            lcdc.lastSelectedServerListAPI = selectedAPIIndex;
-            lcdc.developmentDirectory = developmentDirectorySingleLineTextField.Text;
+            LauncherConfigDataContract lcdc = new LauncherConfigDataContract(selectedAPIIndex, developmentDirectorySingleLineTextField.Text);
             SAMP.LauncherConfigIO = lcdc;
             SaveDeveloperToolsConfig();
             lock (loadServers)
@@ -912,17 +1045,27 @@ namespace SAMPLauncherNET
                 }
                 loadedServers.Clear();
             }
-            if (thread != null)
+            lock (loadedGallery)
             {
-                thread.Abort();
-                thread = null;
+                loadedGallery.Clear();
+            }
+            if (serversThread != null)
+            {
+                serversThread.Abort();
+                serversThread = null;
             }
             if (rowThread != null)
             {
                 rowThread.Abort();
                 rowThread = null;
             }
+            if (galleryThread != null)
+            {
+                galleryThread.Abort();
+                galleryThread = null;
+            }
             SAMP.CloseLastServer();
+            ThumbnailsCache.Clear();
         }
 
         /// <summary>
@@ -937,7 +1080,9 @@ namespace SAMPLauncherNET
             {
                 List<Language> langs = new List<Language>(Translator.TranslatorInterface.Languages);
                 if (Translator.ChangeLanguage(langs[i]))
+                {
                     Application.Restart();
+                }
             }
         }
 
@@ -1009,16 +1154,44 @@ namespace SAMPLauncherNET
         /// <param name="e">Event arguments</param>
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (mainTabControl.SelectedTab == galleryPage)
+            {
+                if (galleryThread == null)
+                {
+                    ReloadGallery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gallery file system watcher changed event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">File system event arguments</param>
+        private void galleryFileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            ThumbnailsCache.RemoveFromCache(e.FullPath);
             ReloadGallery();
         }
 
         /// <summary>
-        /// Gallery file system watcher generic changed event
+        /// Gallery file system watcher created event
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="e">File system event arguments</param>
-        private void galleryFileSystemWatcher_GenericChanged(object sender, System.IO.FileSystemEventArgs e)
+        private void galleryFileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
+            ReloadGallery();
+        }
+
+        /// <summary>
+        /// Gallery file system watcher Deleted event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">File system event arguments</param>
+        private void galleryFileSystemWatcher_Deleted(object sender, System.IO.FileSystemEventArgs e)
+        {
+            ThumbnailsCache.RemoveFromCache(e.FullPath);
             ReloadGallery();
         }
 
@@ -1029,6 +1202,7 @@ namespace SAMPLauncherNET
         /// <param name="e">Renamed event arguments</param>
         private void galleryFileSystemWatcher_Renamed(object sender, System.IO.RenamedEventArgs e)
         {
+            ThumbnailsCache.RemoveFromCache(e.OldFullPath);
             ReloadGallery();
         }
 
@@ -1079,14 +1253,13 @@ namespace SAMPLauncherNET
         /// <param name="e">Key event arguments</param>
         private void galleryListView_KeyUp(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            if (e.KeyCode == Keys.Return)
             {
-                case Keys.Return:
-                    ViewSelectedImage();
-                    break;
-                case Keys.Delete:
-                    DeleteSelectedImage();
-                    break;
+                ViewSelectedImage();
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                DeleteSelectedImage();
             }
         }
 
@@ -1157,7 +1330,9 @@ namespace SAMPLauncherNET
         {
             int v = 0;
             if (!(int.TryParse(pageSizeSingleLineTextField.Text, out v)))
+            {
                 pageSizeSingleLineTextField.Text = "0";
+            }
         }
 
         /// <summary>
@@ -1181,13 +1356,18 @@ namespace SAMPLauncherNET
             if (int.TryParse(fpsLimitSingleLineTextField.Text, out v))
             {
                 if (v < fpsLimitTrackBar.Minimum)
+                {
                     v = fpsLimitTrackBar.Minimum;
+                }
                 else if (v > fpsLimitTrackBar.Maximum)
+                {
                     v = fpsLimitTrackBar.Maximum;
+                }
                 if (fpsLimitSingleLineTextField.Text != v.ToString())
+                {
                     fpsLimitSingleLineTextField.Text = v.ToString();
-                if (fpsLimitTrackBar.Value != v)
-                    fpsLimitTrackBar.Value = v;
+                }
+                fpsLimitTrackBar.Value = v;
             }
             else
             {
@@ -1216,11 +1396,11 @@ namespace SAMPLauncherNET
             Server server = SelectedServer;
             if (server != null)
             {
-                serverListTimer.Stop();
+                multithreadedListsTimer.Stop();
                 ExtendedServerInformationForm esif = new ExtendedServerInformationForm(server);
                 esif.ShowDialog();
                 DialogResult = DialogResult.None;
-                serverListTimer.Start();
+                multithreadedListsTimer.Start();
             }
         }
 
@@ -1239,10 +1419,14 @@ namespace SAMPLauncherNET
                 {
                     ServerListConnector slc = apis[i];
                     if ((slc.ServerListType == EServerListType.Favourites) || (slc.ServerListType == EServerListType.LegacyFavourites))
+                    {
                         connectors.Add(new IndexedServerListConnector(slc, i));
+                    }
                 }
                 if (connectors.Count <= 0)
+                {
                     MessageBox.Show(Translator.GetTranslation("NO_FAVOURITES"), Translator.GetTranslation("NO_FAVOURITES_TITLE"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     IndexedServerListConnector islc = null;
@@ -1252,19 +1436,25 @@ namespace SAMPLauncherNET
                         DialogResult result = flf.ShowDialog();
                         DialogResult = DialogResult.None;
                         if (result == DialogResult.OK)
+                        {
                             islc = flf.SelectedServerListConnector;
+                        }
                     }
                     else
+                    {
                         islc = connectors[0];
+                    }
                     if (islc != null)
                     {
                         ServerListConnector slc = islc.ServerListConnector;
                         Dictionary<string, Server> servers = slc.ServerListIO;
                         if (servers.ContainsKey(server.IPPortString))
+                        {
                             MessageBox.Show(Translator.GetTranslation("SERVER_ALREADY_IN_FAVOURITES"), Translator.GetTranslation("ALREADY_IN_FAVOURITES"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         else
                         {
-                            servers.Add(server.IPPortString, server.ToFavouriteServer(server.Hostname, server.Gamemode));
+                            servers.Add(server.IPPortString, server.ToFavouriteServer(server.Hostname, server.Gamemode, "", ""));
                             slc.ServerListIO = servers;
                             ReloadFavourites(servers, islc.Index);
                         }
@@ -1304,7 +1494,9 @@ namespace SAMPLauncherNET
             DialogResult result = rconf.ShowDialog();
             DialogResult = DialogResult.None;
             if (result == DialogResult.OK)
+            {
                 Connect(null, rconf.RCONPassword, closeWhenLaunchedCheckBox.Checked);
+            }
         }
 
         /// <summary>
@@ -1315,7 +1507,9 @@ namespace SAMPLauncherNET
         private void serversGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
+            {
                 Connect(quitWhenDone: closeWhenLaunchedCheckBox.Checked);
+            }
         }
 
         /// <summary>
@@ -1482,7 +1676,9 @@ namespace SAMPLauncherNET
         private void visitWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 VisitWebsite(SelectedServer.GetRuleValue("weburl"));
+            }
         }
 
         /// <summary>
@@ -1493,7 +1689,9 @@ namespace SAMPLauncherNET
         private void searchOnBingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://bing.com/search?q=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1504,7 +1702,9 @@ namespace SAMPLauncherNET
         private void searchOnDuckDuckGoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://duckduckgo.com/?q=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1515,7 +1715,9 @@ namespace SAMPLauncherNET
         private void searchOnGoogleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://google.com/search?q=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1526,7 +1728,9 @@ namespace SAMPLauncherNET
         private void searchOnYahooToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://search.yahoo.com/search?p=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1537,7 +1741,9 @@ namespace SAMPLauncherNET
         private void searchOnYandexToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://yandex.ru/search/?text=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1548,7 +1754,9 @@ namespace SAMPLauncherNET
         private void searchOnYouTubeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SelectedServer != null)
+            {
                 Process.Start("https://youtube.com/results?search_query=" + Uri.EscapeUriString(SelectedServer.IPPortString + " " + SelectedServer.Hostname));
+            }
         }
 
         /// <summary>
@@ -1559,37 +1767,42 @@ namespace SAMPLauncherNET
         private void developerToolsShowAdditionalConfigurationsButton_Click(object sender, EventArgs e)
         {
             LauncherConfigDataContract lcdc = SAMP.LauncherConfigIO;
-            lcdc.developmentDirectory = developmentDirectorySingleLineTextField.Text;
+            lcdc.DevelopmentDirectory = developmentDirectorySingleLineTextField.Text;
             SAMP.LauncherConfigIO = lcdc;
             DeveloperToolsConfigDataContract dtcdc = SAMP.DeveloperToolsConfigIO;
-            dtcdc.hostname = developerToolsHostnameSingleLineTextField.Text;
-            dtcdc.port = Utils.GetInt(developerToolsPortSingleLineTextField.Text);
-            dtcdc.password = developerToolsServerPasswordSingleLineTextField.Text;
-            dtcdc.rconPassword = developerToolsRCONPasswordSingleLineTextField.Text;
+            dtcdc.Hostname = developerToolsHostnameSingleLineTextField.Text;
+            dtcdc.Port = Utils.GetInt(developerToolsPortSingleLineTextField.Text);
+            dtcdc.Password = developerToolsServerPasswordSingleLineTextField.Text;
+            dtcdc.RCONPassword = developerToolsRCONPasswordSingleLineTextField.Text;
             DeveloperToolsConfigForm dtcf = new DeveloperToolsConfigForm(dtcdc);
             DialogResult result = dtcf.ShowDialog();
             DialogResult = DialogResult.None;
             if (result == DialogResult.OK)
             {
                 dtcdc = dtcf.DeveloperToolsConfigDataContract;
-                developerToolsHostnameSingleLineTextField.Text = dtcdc.hostname;
-                developerToolsPortSingleLineTextField.Text = dtcdc.port.ToString();
-                developerToolsServerPasswordSingleLineTextField.Text = dtcdc.password;
-                developerToolsRCONPasswordSingleLineTextField.Text = dtcdc.rconPassword;
+                developerToolsHostnameSingleLineTextField.Text = dtcdc.Hostname;
+                developerToolsPortSingleLineTextField.Text = dtcdc.Port.ToString();
+                developerToolsServerPasswordSingleLineTextField.Text = dtcdc.Password;
+                developerToolsRCONPasswordSingleLineTextField.Text = dtcdc.RCONPassword;
                 List<string> entries = new List<string>();
                 foreach (var item in developerToolsGamemodesCheckedListBox.CheckedItems)
+                {
                     entries.Add(item.ToString());
-                dtcdc.gamemodes = entries.ToArray();
+                }
+                dtcdc.Gamemodes = entries.ToArray();
                 entries.Clear();
                 foreach (var item in developerToolsFilterscriptsCheckedListBox.CheckedItems)
+                {
                     entries.Add(item.ToString());
-                dtcdc.filterscripts = entries.ToArray();
+                }
+                dtcdc.Filterscripts = entries.ToArray();
                 entries.Clear();
                 foreach (var item in developerToolsPluginsCheckedListBox.CheckedItems)
+                {
                     entries.Add(item.ToString());
-                dtcdc.plugins = entries.ToArray();
+                }
+                dtcdc.Plugins = entries.ToArray();
                 entries.Clear();
-
                 SAMP.DeveloperToolsConfigIO = dtcdc;
                 ReloadDeveloperToolsConfig();
             }
@@ -1605,7 +1818,7 @@ namespace SAMPLauncherNET
             if (Directory.Exists(developmentDirectorySingleLineTextField.Text))
             {
                 LauncherConfigDataContract lcdc = SAMP.LauncherConfigIO;
-                lcdc.developmentDirectory = developmentDirectorySingleLineTextField.Text;
+                lcdc.DevelopmentDirectory = developmentDirectorySingleLineTextField.Text;
                 SAMP.LauncherConfigIO = lcdc;
                 ReloadDeveloperToolsConfig();
             }
@@ -1619,7 +1832,9 @@ namespace SAMPLauncherNET
         private void developerToolsOpenDirectoryButton_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(developmentDirectorySingleLineTextField.Text))
+            {
                 Process.Start("explorer.exe", Path.GetFullPath(developmentDirectorySingleLineTextField.Text));
+            }
         }
 
         /// <summary>
@@ -1630,7 +1845,7 @@ namespace SAMPLauncherNET
         private void developerToolsStartServerButton_Click(object sender, EventArgs e)
         {
             SaveDeveloperToolsConfig();
-            SAMP.LaunchSAMPServer(SaveDeveloperToolsConfig());
+            SAMP.LaunchSAMPServer();
         }
 
         /// <summary>
@@ -1651,7 +1866,118 @@ namespace SAMPLauncherNET
         private void developerToolsConnectToTestServerButton_Click(object sender, EventArgs e)
         {
             DeveloperToolsConfigDataContract dtcdc = SAMP.DeveloperToolsConfigIO;
-            Connect(new Server("127.0.0.1:" + dtcdc.port, false), dtcdc.rconPassword);
+            Connect(new Server("127.0.0.1:" + dtcdc.Port, false), dtcdc.RCONPassword);
+        }
+
+        /// <summary>
+        /// Patch version picture box click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void patchVersionPictureBox_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in versionsListView.SelectedItems)
+            {
+                if (item.Tag is SAMPVersion)
+                {
+                    SAMPVersion version = (SAMPVersion)(item.Tag);
+                    if (SAMPProvider.CurrentVersion != version)
+                    {
+                        if (MessageBox.Show(string.Format(Translator.GetTranslation("PATCH_VERSION"), version.Name), Translator.GetTranslation("PATCH_VERSION_TITLE"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            SAMP.ChangeSAMPVersion(version, false);
+                            ReloadVersions();
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Install version picture box click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void installVersionPictureBox_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in versionsListView.SelectedItems)
+            {
+                if (item.Tag is SAMPVersion)
+                {
+                    SAMPVersion version = (SAMPVersion)(item.Tag);
+                    if (SAMPProvider.CurrentVersion != version)
+                    {
+                        if (MessageBox.Show(string.Format(Translator.GetTranslation("INSTALL_VERSION"), version.Name), Translator.GetTranslation("INSTALL_VERSION_TITLE"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            SAMP.ChangeSAMPVersion(version, true);
+                            ReloadVersions();
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Versions list view mouse double click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Mouse event arguments</param>
+        private void versionsListView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            foreach (ListViewItem item in versionsListView.SelectedItems)
+            {
+                if (item.Tag is SAMPVersion)
+                {
+                    SAMPVersion version = (SAMPVersion)(item.Tag);
+                    if (SAMPProvider.CurrentVersion != version)
+                    {
+                        switch (MessageBox.Show(string.Format(Translator.GetTranslation("SELECT_VERSION"), version.Name), Translator.GetTranslation("SELECT_VERSION_TITLE"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning))
+                        {
+                            case DialogResult.Yes:
+                                SAMP.ChangeSAMPVersion(version, false);
+                                ReloadVersions();
+                                break;
+                            case DialogResult.No:
+                                SAMP.ChangeSAMPVersion(version, true);
+                                ReloadVersions();
+                                break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add address to favourites list tool strip menu item click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void addAddressToFavouriteListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddAddressToFavouriteListForm aatflf = new AddAddressToFavouriteListForm(FavouriteLists);
+            DialogResult result = aatflf.ShowDialog();
+            DialogResult = DialogResult.None;
+            if (result == DialogResult.OK)
+            {
+                IndexedServerListConnector islc = aatflf.SelectedServerListConnector;
+                ServerListConnector slc = islc.ServerListConnector;
+                Dictionary<string, Server> servers = slc.ServerListIO;
+                FavouriteServer server = new FavouriteServer(aatflf.Address, "", "", "", "");
+                if (servers.ContainsKey(server.IPPortString))
+                {
+                    MessageBox.Show(Translator.GetTranslation("SERVER_ALREADY_IN_FAVOURITES"), Translator.GetTranslation("ALREADY_IN_FAVOURITES"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    servers.Add(server.IPPortString, server);
+                    slc.ServerListIO = servers;
+                    ReloadFavourites(servers, islc.Index);
+                }
+                server.Dispose();
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Languages
         /// </summary>
-        private Language[] languages = new Language[] { new Language("DUTCH", "nl-BE"), new Language("ENGLISH", "en-GB"), new Language("GEORGIAN", "ge-GE"), new Language("GERMAN", "de-DE"), new Language("RUSSIAN", "ru-RU") };
+        private readonly Language[] languages = new [] { new Language("DUTCH", "nl-BE"), new Language("ENGLISH", "en-GB"), new Language("GEORGIAN", "ge-GE"), new Language("GERMAN", "de-DE"), new Language("PORTUGUESE", "pt-BR"), new Language("RUSSIAN", "ru-RU") };
 
         /// <summary>
         /// Language
@@ -28,6 +28,17 @@ namespace SAMPLauncherNET
             set
             {
                 Properties.Settings.Default["Language"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Fallback language
+        /// </summary>
+        public string FallbackLanguage
+        {
+            get
+            {
+                return "en-GB";
             }
         }
 

@@ -16,14 +16,12 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Endpoint
         /// </summary>
-        private string endpoint;
-
-        private Type serializationType;
+        private readonly string endpoint;
 
         /// <summary>
         /// Serializer
         /// </summary>
-        private DataContractJsonSerializer serializer;
+        private readonly DataContractJsonSerializer serializer;
 
         /// <summary>
         /// Constructor
@@ -33,7 +31,6 @@ namespace SAMPLauncherNET
         public GeoLocationProvider(string endpoint, Type serializationType)
         {
             this.endpoint = endpoint;
-            this.serializationType = serializationType;
             serializer = new DataContractJsonSerializer(serializationType);
         }
 
@@ -54,12 +51,14 @@ namespace SAMPLauncherNET
                 {
                     object result = serializer.ReadObject(stream);
                     if (result != null)
+                    {
                         ret = new GeoLocationData(result);
+                    }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
             return ret;
         }

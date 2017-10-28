@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
@@ -22,12 +22,12 @@ namespace SAMPLauncherNET
         /// <summary>
         /// API HTTP URL
         /// </summary>
-        public const string APIHTTPURL = "http://lists.sa-mp.com/0.3.7/";
+        public static readonly string APIHTTPURL = "http://lists.sa-mp.com/0.3.7/";
 
         /// <summary>
         /// Registry key
         /// </summary>
-        public const string RegistryKey = "HKEY_CURRENT_USER\\SOFTWARE\\SAMP";
+        public static readonly string RegistryKey = "HKEY_CURRENT_USER\\SOFTWARE\\SAMP";
 
         /// <summary>
         /// Configuration path
@@ -52,17 +52,17 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Launcher config path
         /// </summary>
-        public const string LauncherConfigPath = "./config.json";
+        public static readonly string LauncherConfigPath = "./config.json";
 
         /// <summary>
         /// Server list API path
         /// </summary>
-        public const string ServerListAPIPath = "./api.json";
+        public static readonly string ServerListAPIPath = "./api.json";
 
         /// <summary>
         /// Developer tools config file name
         /// </summary>
-        public const string DeveloperToolsConfigFileName = "samp.json";
+        public static readonly string DeveloperToolsConfigFileName = "samp.json";
 
         /// <summary>
         /// Gallery path
@@ -87,7 +87,7 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Favourites path
         /// </summary>
-        public const string FavouritesPath = ".\\favourites.json";
+        public static readonly string FavouritesPath = ".\\favourites.json";
 
         /// <summary>
         /// Legacy favourites path
@@ -97,32 +97,32 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Forums URL
         /// </summary>
-        public const string ForumsURL = "http://forum.sa-mp.com/index.php";
+        public static readonly string ForumsURL = "http://forum.sa-mp.com/index.php";
 
         /// <summary>
         /// GitHub project URL
         /// </summary>
-        public const string GitHubProjectURL = "https://github.com/BigETI/SAMPLauncherNET";
+        public static readonly string GitHubProjectURL = "https://github.com/BigETI/SAMPLauncherNET";
 
         /// <summary>
         /// Launcher configuration serializer
         /// </summary>
-        public static DataContractJsonSerializer launcherConfigSerializer = new DataContractJsonSerializer(typeof(LauncherConfigDataContract));
+        public static readonly DataContractJsonSerializer launcherConfigSerializer = new DataContractJsonSerializer(typeof(LauncherConfigDataContract));
 
         /// <summary>
         /// API JSON serializer
         /// </summary>
-        public static DataContractJsonSerializer apiJSONSerializer = new DataContractJsonSerializer(typeof(APIDataContract[]));
+        public static readonly DataContractJsonSerializer apiJSONSerializer = new DataContractJsonSerializer(typeof(APIDataContract[]));
 
         /// <summary>
         /// Developer tools serializer
         /// </summary>
-        public static DataContractJsonSerializer developerToolsConfigSerializer = new DataContractJsonSerializer(typeof(DeveloperToolsConfigDataContract));
+        public static readonly DataContractJsonSerializer developerToolsConfigSerializer = new DataContractJsonSerializer(typeof(DeveloperToolsConfigDataContract));
 
         /// <summary>
         /// Last server process
         /// </summary>
-        public static Process lastServerProcess = null;
+        private static Process lastServerProcess;
 
         /// <summary>
         /// Username
@@ -136,9 +136,9 @@ namespace SAMPLauncherNET
                 {
                     ret = Registry.GetValue(RegistryKey, "PlayerName", "").ToString();
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 return ret;
             }
@@ -160,9 +160,9 @@ namespace SAMPLauncherNET
                 {
                     ret = Registry.GetValue(RegistryKey, "gta_sa_exe", "").ToString();
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 return ret;
             }
@@ -182,7 +182,9 @@ namespace SAMPLauncherNET
                     {
                         APIDataContract[] api = (APIDataContract[])(apiJSONSerializer.ReadObject(stream));
                         foreach (APIDataContract apidc in api)
+                        {
                             ret.Add(new ServerListConnector(apidc));
+                        }
                     }
                 }
                 catch
@@ -197,7 +199,9 @@ namespace SAMPLauncherNET
                 {
                     APIDataContract[] api = new APIDataContract[value.Count];
                     for (int i = 0; i < api.Length; i++)
+                    {
                         api[i] = value[i].APIDataContract;
+                    }
                     try
                     {
                         foreach (ServerListConnector connector in value)
@@ -208,9 +212,9 @@ namespace SAMPLauncherNET
                             }
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -234,9 +238,9 @@ namespace SAMPLauncherNET
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 return ret;
             }
@@ -260,9 +264,9 @@ namespace SAMPLauncherNET
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
                 return ret;
             }
@@ -285,13 +289,15 @@ namespace SAMPLauncherNET
                             ret = launcherConfigSerializer.ReadObject(reader.BaseStream) as LauncherConfigDataContract;
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 if (ret == null)
+                {
                     ret = new LauncherConfigDataContract();
+                }
                 return ret;
             }
             set
@@ -305,9 +311,9 @@ namespace SAMPLauncherNET
                             launcherConfigSerializer.WriteObject(writer.BaseStream, value);
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -332,7 +338,7 @@ namespace SAMPLauncherNET
             get
             {
                 DeveloperToolsConfigDataContract ret = null;
-                string path = Utils.AppendCharacterToString(LauncherConfigIO.developmentDirectory, '\\') + DeveloperToolsConfigFileName;
+                string path = Utils.AppendCharacterToString(LauncherConfigIO.DevelopmentDirectory, '\\') + DeveloperToolsConfigFileName;
                 if (File.Exists(path))
                 {
                     try
@@ -342,22 +348,26 @@ namespace SAMPLauncherNET
                             ret = developerToolsConfigSerializer.ReadObject(reader.BaseStream) as DeveloperToolsConfigDataContract;
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 if (ret == null)
+                {
                     ret = new DeveloperToolsConfigDataContract();
+                }
                 return ret;
             }
             set
             {
                 if (value != null)
                 {
-                    string directory = Utils.AppendCharacterToString(LauncherConfigIO.developmentDirectory, '\\');
+                    string directory = Utils.AppendCharacterToString(LauncherConfigIO.DevelopmentDirectory, '\\');
                     if (!(Directory.Exists(directory)))
+                    {
                         Directory.CreateDirectory(directory);
+                    }
                     try
                     {
                         using (StreamWriter writer = new StreamWriter(directory + DeveloperToolsConfigFileName))
@@ -365,9 +375,9 @@ namespace SAMPLauncherNET
                             developerToolsConfigSerializer.WriteObject(writer.BaseStream, value);
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -384,6 +394,8 @@ namespace SAMPLauncherNET
             ret.Add(new ServerListConnector("{$SHOW_LEGACY_FAVOURITES$}", EServerListType.LegacyFavourites, LegacyFavouritesPath));
             ret.Add(new ServerListConnector("{$SHOW_LEGACY_HOSTED_LIST$}", EServerListType.LegacySAMP, APIHTTPURL + "hosted"));
             ret.Add(new ServerListConnector("{$SHOW_LEGACY_MASTER_LIST$}", EServerListType.LegacySAMP, APIHTTPURL + "servers"));
+            ret.Add(new ServerListConnector("{$SHOW_SOUTHCLAWS_LIST$}", EServerListType.BackendRESTful, "http://api.samp.southcla.ws/v2/servers"));
+            ret.Add(new ServerListConnector("{$SHOW_SACNR_LIST$}", EServerListType.LegacySAMP, "http://monitor.sacnr.com/list/masterlist.txt"));
             APIIO = ret;
             return ret;
         }
@@ -438,7 +450,9 @@ namespace SAMPLauncherNET
                                 Kernel32.ResumeThread(process_info.hThread);
                                 Kernel32.CloseHandle(process_info.hProcess);
                                 if (quitWhenDone)
+                                {
                                     f.Close();
+                                }
                             }
                         }
                     }
@@ -458,9 +472,9 @@ namespace SAMPLauncherNET
                     lastServerProcess.CloseMainWindow();
                     lastServerProcess = null;
                 }
-                catch
+                catch (Exception e)
                 {
-                    //
+                    Console.Error.WriteLine(e.Message);
                 }
             }
         }
@@ -468,18 +482,15 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Launch SA:MP server
         /// </summary>
-        /// <param name="dtcdc">Developer tools config data contract</param>
-        public static void LaunchSAMPServer(DeveloperToolsConfigDataContract dtcdc = null)
+        public static void LaunchSAMPServer()
         {
             LauncherConfigDataContract lcdc = LauncherConfigIO;
-            if (dtcdc == null)
-                dtcdc = DeveloperToolsConfigIO;
             if (File.Exists("sampctl.exe"))
             {
                 try
                 {
                     CloseLastServer();
-                    lastServerProcess = Process.Start("sampctl.exe", "run --dir " + lcdc.developmentDirectory);
+                    lastServerProcess = Process.Start("sampctl.exe", "run --dir " + lcdc.DevelopmentDirectory);
                 }
                 catch (Exception e)
                 {
@@ -487,7 +498,9 @@ namespace SAMPLauncherNET
                 }
             }
             else
+            {
                 MessageBox.Show("Get \"sampctl.exe\" from https://github.com/Southclaws/sampctl/releases to run a server.", "\"sampctl\" missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -501,9 +514,69 @@ namespace SAMPLauncherNET
             {
                 LaunchSAMP(null, "", null, null, true, quitWhenDone, f);
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Change SA:MP version
+        /// </summary>
+        /// <param name="version">Version</param>
+        /// <param name="useInstaller">Use installer</param>
+        public static void ChangeSAMPVersion(SAMPVersion version, bool useInstaller)
+        {
+            if (version != null)
+            {
+                DownloadProgressForm dpf = new DownloadProgressForm(useInstaller ? version.InstallationURI : version.ZipURI, useInstaller ? "install.exe" : "client.zip");
+                if (dpf.ShowDialog() == DialogResult.OK)
+                {
+                    SAMPProvider.ResetVersionCache();
+                    try
+                    {
+                        if (File.Exists(dpf.Path))
+                        {
+                            if (useInstaller)
+                            {
+                                Process.Start(dpf.Path);
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                using (ZipArchive archive = ZipFile.Open(dpf.Path, ZipArchiveMode.Read))
+                                {
+                                    foreach (ZipArchiveEntry entry in archive.Entries)
+                                    {
+                                        string path = ExeDir + "\\" + entry.FullName.Replace('/', '\\');
+                                        try
+                                        {
+                                            using (Stream stream = entry.Open())
+                                            {
+                                                using (FileStream file_stream = new FileStream(path, FileMode.Create))
+                                                {
+                                                    int b = -1;
+                                                    while ((b = stream.ReadByte()) != -1)
+                                                    {
+                                                        file_stream.WriteByte((byte)b);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Console.Error.WriteLine(e.Message);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -518,11 +591,13 @@ namespace SAMPLauncherNET
             {
                 Process.Start(GTASAExe);
                 if (quitWhenDone)
+                {
                     f.Close();
+                }
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
 
@@ -535,33 +610,20 @@ namespace SAMPLauncherNET
             {
                 Process.Start("explorer.exe", GalleryPath);
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
 
         /// <summary>
-        /// Gallery images
+        /// Gallery image paths
         /// </summary>
-        public static Dictionary<string, Image> GalleryImages
+        public static string[] GalleryImagePaths
         {
             get
             {
-                Dictionary<string, Image> ret = new Dictionary<string, Image>();
-                string[] files = Directory.GetFiles(GalleryPath, "*.png");
-                foreach (string file in files)
-                {
-                    try
-                    {
-                        ret.Add(file, Utils.GetThumbnail(Image.FromFile(file)));
-                    }
-                    catch
-                    {
-                        //
-                    }
-                }
-                return ret;
+                return Directory.GetFiles(GalleryPath, "*.png");
             }
         }
 
@@ -574,9 +636,9 @@ namespace SAMPLauncherNET
             {
                 Process.Start(ForumsURL);
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
 
@@ -589,9 +651,9 @@ namespace SAMPLauncherNET
             {
                 Process.Start(GitHubProjectURL);
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
     }

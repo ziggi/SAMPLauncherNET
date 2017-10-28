@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,54 +19,59 @@ namespace SAMPLauncherNET
     public class Server : IDisposable
     {
         /// <summary>
+        /// IPv4 regular expression
+        /// </summary>
+        private static Regex ipv4regex = new Regex(@"\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b");
+
+        /// <summary>
         /// Socket
         /// </summary>
-        private Socket socket = null;
+        private Socket socket;
 
         /// <summary>
         /// IPv4 address
         /// </summary>
-        private uint ipv4AddressUInt = 0U;
+        private readonly uint ipv4AddressUInt;
 
         /// <summary>
         /// Port
         /// </summary>
-        private ushort port = 0;
+        private readonly ushort port;
 
         /// <summary>
         /// Is server valid
         /// </summary>
-        private bool isValid = false;
+        private readonly bool isValid;
 
         /// <summary>
         /// IP address
         /// </summary>
-        private IPAddress ipAddress = null;
+        private IPAddress ipAddress;
 
         /// <summary>
         /// Timestamp
         /// </summary>
-        private DateTime[] timestamp = new DateTime[2];
+        private readonly DateTime[] timestamp = new DateTime[2];
 
         /// <summary>
         /// Request required
         /// </summary>
-        protected RequestsRequired requestsRequired = new RequestsRequired();
+        protected RequestsRequired requestsRequired = new RequestsRequired(true);
 
         /// <summary>
         /// Has password
         /// </summary>
-        protected bool hasPassword = false;
+        protected bool hasPassword;
 
         /// <summary>
         /// Player count
         /// </summary>
-        protected ushort playerCount = 0;
+        protected ushort playerCount;
 
         /// <summary>
         /// Maximal players
         /// </summary>
-        protected ushort maxPlayers = 0;
+        protected ushort maxPlayers;
 
         /// <summary>
         /// Hostname
@@ -85,27 +91,27 @@ namespace SAMPLauncherNET
         /// <summary>
         /// Rules
         /// </summary>
-        private Dictionary<string, string> rules = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> rules = new Dictionary<string, string>();
 
         /// <summary>
         /// Clients
         /// </summary>
-        private Dictionary<string, int> clients = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> clients = new Dictionary<string, int>();
 
         /// <summary>
         /// Players
         /// </summary>
-        private Dictionary<byte, Player> players = new Dictionary<byte, Player>();
+        private readonly Dictionary<byte, Player> players = new Dictionary<byte, Player>();
 
         /// <summary>
         /// Random numbers
         /// </summary>
-        private byte[] randomNumbers = new byte[4];
+        private readonly byte[] randomNumbers = new byte[4];
 
         /// <summary>
         /// Ping
         /// </summary>
-        private uint ping = 0U;
+        private uint ping;
 
         /// <summary>
         /// Threads
@@ -156,7 +162,9 @@ namespace SAMPLauncherNET
                 for (int i = 0; i < 4; i++)
                 {
                     if (i > 0)
+                    {
                         sb.Append(".");
+                    }
                     sb.Append(((ipv4AddressUInt >> (i * 8)) & 0xFF).ToString());
                 }
                 return sb.ToString();
@@ -176,9 +184,9 @@ namespace SAMPLauncherNET
                     {
                         ipAddress = Dns.GetHostAddresses(IPv4AddressString)[0];
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 return ipAddress;
@@ -478,11 +486,7 @@ namespace SAMPLauncherNET
         {
             get
             {
-                FavouriteDataContract ret = new FavouriteDataContract();
-                ret.host = IPPortString;
-                ret.hostname = Hostname;
-                ret.mode = Gamemode;
-                return ret;
+                return new FavouriteDataContract(IPPortString, Hostname, Gamemode);
             }
         }
 
@@ -491,64 +495,79 @@ namespace SAMPLauncherNET
         /// </summary>
         /// <param name="hostAndPort">Host and port</param>
         /// <param name="fetchData">Fetch data</param>
-        public Server(string hostAndPort, bool fetchData = true)
+        public Server(string hostAndPort, bool fetchData)
         {
             try
             {
-                string[] hp = hostAndPort.Trim().Split(new char[] { ':' });
+                string[] hp = hostAndPort.Trim().Split(new [] { ':' });
                 IPAddress[] ips = null;
                 if ((hp.Length == 1) || (hp.Length == 2))
+                {
                     ips = Dns.GetHostAddresses(hp[0]);
+                }
                 if (ips != null)
                 {
                     if (ips.Length > 0)
                     {
-                        string[] parts = ips[0].MapToIPv4().ToString().Trim().Split(new char[] { '.' });
-                        uint n;
-                        if (parts.Length == 4)
+                        foreach (IPAddress ip in ips)
                         {
-                            isValid = true;
-                            for (int i = 0; i < 4; i++)
+                            if (ipv4regex.IsMatch(ip.ToString()))
                             {
-                                if (uint.TryParse(parts[i], out n))
-                                    ipv4AddressUInt |= n << (i * 8);
-                                else
+                                string[] parts = ip.MapToIPv4().ToString().Trim().Split(new [] { '.' });
+                                uint n;
+                                if (parts.Length == 4)
                                 {
-                                    isValid = false;
-                                    break;
-                                }
-                            }
-                            if (isValid)
-                            {
-                                bool success = true;
-                                if (hp.Length == 1)
-                                    port = 7777;
-                                else
-                                    success = ushort.TryParse(hp[1], out port);
-                                if (success)
-                                {
-                                    socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-                                    socket.SendTimeout = 1000;
-                                    socket.ReceiveTimeout = 1000;
-                                    if (fetchData)
+                                    isValid = true;
+                                    for (int i = 0; i < 4; i++)
                                     {
-                                        FetchDataAsync(ERequestType.Ping);
-                                        FetchDataAsync(ERequestType.Information);
+                                        if (uint.TryParse(parts[i], out n))
+                                        {
+                                            ipv4AddressUInt |= n << (i * 8);
+                                        }
+                                        else
+                                        {
+                                            isValid = false;
+                                            break;
+                                        }
+                                    }
+                                    if (isValid)
+                                    {
+                                        bool success = true;
+                                        if (hp.Length == 1)
+                                        {
+                                            port = 7777;
+                                        }
+                                        else
+                                        {
+                                            success = ushort.TryParse(hp[1], out port);
+                                        }
+                                        if (success)
+                                        {
+                                            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                                            socket.SendTimeout = 1000;
+                                            socket.ReceiveTimeout = 1000;
+                                            if (fetchData)
+                                            {
+                                                FetchDataAsync(ERequestType.Ping);
+                                                FetchDataAsync(ERequestType.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ipv4AddressUInt = 0U;
+                                            isValid = false;
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    ipv4AddressUInt = 0U;
-                                    isValid = false;
-                                }
+                                break;
                             }
                         }
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
 
@@ -610,9 +629,9 @@ namespace SAMPLauncherNET
                     {
                         t.Start();
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -695,9 +714,9 @@ namespace SAMPLauncherNET
                     {
                         t.Start();
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -716,9 +735,9 @@ namespace SAMPLauncherNET
                     {
                         t.Join();
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        //
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
@@ -745,7 +764,9 @@ namespace SAMPLauncherNET
         {
             bool ret = true;
             if (requestsRequired[requestType])
+            {
                 ret = SendQuery(requestType);
+            }
             return ret;
         }
 
@@ -758,7 +779,9 @@ namespace SAMPLauncherNET
         {
             uint t = (uint)(DateTime.Now.Subtract(requestsRequired.GetLastRequestTime(requestType)).TotalMilliseconds);
             if (t >= milliseconds)
+            {
                 SendQueryAsync(requestType);
+            }
         }
 
         /// <summary>
@@ -797,9 +820,9 @@ namespace SAMPLauncherNET
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
             return ret;
         }
@@ -864,9 +887,9 @@ namespace SAMPLauncherNET
                                                             rules.Add(k, Encoding.Default.GetString(reader.ReadBytes(reader.ReadByte())));
                                                         }
                                                     }
-                                                    catch
+                                                    catch (Exception e)
                                                     {
-                                                        //
+                                                        Console.Error.WriteLine(e.Message);
                                                     }
                                                     requestsRequired[ERequestType.Rules] = false;
                                                 }
@@ -887,9 +910,9 @@ namespace SAMPLauncherNET
                                                             clients.Add(k, reader.ReadInt32());
                                                         }
                                                     }
-                                                    catch
+                                                    catch (Exception e)
                                                     {
-                                                        //
+                                                        Console.Error.WriteLine(e.Message);
                                                     }
                                                     requestsRequired[ERequestType.Clients] = false;
                                                 }
@@ -915,9 +938,9 @@ namespace SAMPLauncherNET
                                                             players.Add(id, new Player(id, pn, s, p));
                                                         }
                                                     }
-                                                    catch
+                                                    catch (Exception e)
                                                     {
-                                                        //
+                                                        Console.Error.WriteLine(e.Message);
                                                     }
                                                     requestsRequired[ERequestType.DetailedClients] = false;
                                                 }
@@ -930,9 +953,9 @@ namespace SAMPLauncherNET
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                //
+                Console.Error.WriteLine(e.Message);
             }
         }
 
@@ -958,7 +981,9 @@ namespace SAMPLauncherNET
             string ret = "";
             SendQueryWhenRequired(ERequestType.Rules);
             if (rules.ContainsKey(ruleName))
+            {
                 ret = rules[ruleName];
+            }
             return ret;
         }
 
@@ -972,7 +997,9 @@ namespace SAMPLauncherNET
             int ret = 0;
             SendQueryWhenRequired(ERequestType.Clients);
             if (clients.ContainsKey(clientName))
+            {
                 ret = clients[clientName];
+            }
             return ret;
         }
 
@@ -986,7 +1013,9 @@ namespace SAMPLauncherNET
             Player ret = null;
             SendQueryWhenRequired(ERequestType.DetailedClients);
             if (players.ContainsKey(id))
+            {
                 ret = players[id];
+            }
             return ret;
         }
 
@@ -998,7 +1027,7 @@ namespace SAMPLauncherNET
         /// <param name="serverPassword">Server password</param>
         /// <param name="rconPassword">RCON password</param>
         /// <returns></returns>
-        public FavouriteServer ToFavouriteServer(string cachedName = "", string cachedGamemode = "", string serverPassword = "", string rconPassword = "")
+        public FavouriteServer ToFavouriteServer(string cachedName, string cachedGamemode, string serverPassword, string rconPassword)
         {
             return new FavouriteServer(IPPortString, cachedName, cachedGamemode, serverPassword, rconPassword);
         }

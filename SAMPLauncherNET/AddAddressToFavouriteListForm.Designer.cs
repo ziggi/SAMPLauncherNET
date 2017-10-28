@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAddressToFavouriteListForm));
             this.mainFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.addressLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.addressSingleLineTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.selectFavouritesListLabel = new MaterialSkin.Controls.MaterialLabel();
             this.favouritesListComboBox = new System.Windows.Forms.ComboBox();
             this.okButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.addressSingleLineTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.addressLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +55,36 @@
             this.mainFlowLayoutPanel.Name = "mainFlowLayoutPanel";
             this.mainFlowLayoutPanel.Size = new System.Drawing.Size(448, 144);
             this.mainFlowLayoutPanel.TabIndex = 1;
+            // 
+            // addressLabel
+            // 
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Depth = 0;
+            this.addressLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.addressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.addressLabel.Location = new System.Drawing.Point(3, 0);
+            this.addressLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(156, 19);
+            this.addressLabel.TabIndex = 5;
+            this.addressLabel.Text = "{$HOST_AND_PORT$}";
+            // 
+            // addressSingleLineTextField
+            // 
+            this.addressSingleLineTextField.Depth = 0;
+            this.addressSingleLineTextField.Hint = "...";
+            this.addressSingleLineTextField.Location = new System.Drawing.Point(3, 22);
+            this.addressSingleLineTextField.MaxLength = 32767;
+            this.addressSingleLineTextField.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addressSingleLineTextField.Name = "addressSingleLineTextField";
+            this.addressSingleLineTextField.PasswordChar = '\0';
+            this.addressSingleLineTextField.SelectedText = "";
+            this.addressSingleLineTextField.SelectionLength = 0;
+            this.addressSingleLineTextField.SelectionStart = 0;
+            this.addressSingleLineTextField.Size = new System.Drawing.Size(445, 23);
+            this.addressSingleLineTextField.TabIndex = 4;
+            this.addressSingleLineTextField.TabStop = false;
+            this.addressSingleLineTextField.UseSystemPasswordChar = false;
             // 
             // selectFavouritesListLabel
             // 
@@ -94,6 +125,7 @@
             this.okButton.TabIndex = 2;
             this.okButton.Text = "{$OK$}";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -109,36 +141,7 @@
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "{$CANCEL$}";
             this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // addressSingleLineTextField
-            // 
-            this.addressSingleLineTextField.Depth = 0;
-            this.addressSingleLineTextField.Hint = "...";
-            this.addressSingleLineTextField.Location = new System.Drawing.Point(3, 22);
-            this.addressSingleLineTextField.MaxLength = 32767;
-            this.addressSingleLineTextField.MouseState = MaterialSkin.MouseState.HOVER;
-            this.addressSingleLineTextField.Name = "addressSingleLineTextField";
-            this.addressSingleLineTextField.PasswordChar = '\0';
-            this.addressSingleLineTextField.SelectedText = "";
-            this.addressSingleLineTextField.SelectionLength = 0;
-            this.addressSingleLineTextField.SelectionStart = 0;
-            this.addressSingleLineTextField.Size = new System.Drawing.Size(445, 23);
-            this.addressSingleLineTextField.TabIndex = 4;
-            this.addressSingleLineTextField.TabStop = false;
-            this.addressSingleLineTextField.UseSystemPasswordChar = false;
-            // 
-            // addressLabel
-            // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Depth = 0;
-            this.addressLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.addressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.addressLabel.Location = new System.Drawing.Point(3, 0);
-            this.addressLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(156, 19);
-            this.addressLabel.TabIndex = 5;
-            this.addressLabel.Text = "{$HOST_AND_PORT$}";
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // AddAddressToFavouriteListForm
             // 
@@ -146,6 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 220);
             this.Controls.Add(this.mainFlowLayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(472, 220);
             this.MinimumSize = new System.Drawing.Size(472, 220);
             this.Name = "AddAddressToFavouriteListForm";
